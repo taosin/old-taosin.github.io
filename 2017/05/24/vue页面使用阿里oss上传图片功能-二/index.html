@@ -1,8 +1,84 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Nixx"><title>Vue使用阿里oss上传图片功能2 | Nix_____</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-96088772-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Vue使用阿里oss上传图片功能2</h1><a id="logo" href="/.">Nix_____</a><p class="description">Nix的小黑屋</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Vue使用阿里oss上传图片功能2</h1><div class="post-meta">May 24, 2017<span> | </span><span class="category"><a href="/categories/关于技术/">关于技术</a></span></div><div class="post-content"><p><img src="http://blog.xinsay.cn/0e11af972a262b19c8f38df754c88348.png" alt=""></p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Nix的小黑屋">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>Vue使用阿里oss上传图片功能(二) | Nix_____的小黑屋</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>Nix_____的小黑屋</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于我</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>Vue使用阿里oss上传图片功能(二)</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2017年05月24日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+
+
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
+                
+               
+  <a href="/tags/#vue.js" class='tag'>vue.js</a>
+
+
+            
+          </div>
+          <p><img src="http://blog.xinsay.cn/0e11af972a262b19c8f38df754c88348.png" alt=""></p>
 <h3 id="主要介绍OSS管理控制台设置访问权限、角色等。"><a href="#主要介绍OSS管理控制台设置访问权限、角色等。" class="headerlink" title="主要介绍OSS管理控制台设置访问权限、角色等。"></a>主要介绍OSS管理控制台设置访问权限、角色等。</h3><p><a href="https://github.com/taosin/alioss-js-upload" target="_blank" rel="noopener">demo源码</a></p>
 <p>进入控制台，鼠标移到右上角用户名处，点击“访问控制”,如下图：<br><img src="http://blog.xinsay.cn/oss_11.jpg" alt="enter image description here"><br>如果没有此功能，则将鼠标移至 <strong>产品</strong>  -&gt; <strong>管理与控制</strong>，点击 <strong>访问控制</strong>进入访问控制产品页<br><img src="http://blog.xinsay.cn/oss_123.png" alt="enter image description here"></p>
 <h4 id="1-创建子账号"><a href="#1-创建子账号" class="headerlink" title="1.创建子账号"></a>1.创建子账号</h4><ul>
@@ -41,4 +117,97 @@ ga('create','UA-96088772-1','auto');ga('send','pageview');</script></head><body>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> policy = &#123;</span><br><span class="line">	<span class="string">"Version"</span>: <span class="string">"1"</span>,</span><br><span class="line">	<span class="string">"Statement"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">		<span class="string">"Action"</span>: [</span><br><span class="line">		<span class="string">"oss:GetObject"</span>,</span><br><span class="line">		<span class="string">"oss:PutObject"</span></span><br><span class="line">		],</span><br><span class="line">		<span class="string">"Resource"</span>: [</span><br><span class="line">		<span class="string">"acs:oss:*:*:BucketName"</span>,</span><br><span class="line">		<span class="string">"acs:oss:*:*:BucketName/*"</span></span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 这里的policy 必须和之前创建的策略一致。
-</code></pre></div><div class="tags"><a href="/tags/vue-js/">vue.js</a></div><div class="post-nav"><a class="pre" href="/2017/05/24/关于js页面中oss在https下web直传的问题/">关于Js页面中oss在https下web直传的问题</a><a class="next" href="/2017/05/24/vue页面使用阿里oss上传功能-一/">Vue使用阿里oss上传图片功能1</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/leancloud/" style="font-size: 15px;">leancloud</a> <a href="/tags/next/" style="font-size: 15px;">next</a> <a href="/tags/bash/" style="font-size: 15px;">bash</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/PWA/" style="font-size: 15px;">PWA</a> <a href="/tags/qiniu/" style="font-size: 15px;">qiniu</a> <a href="/tags/vue-js/" style="font-size: 15px;">vue.js</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/沉思录/" style="font-size: 15px;">沉思录</a> <a href="/tags/不是诗/" style="font-size: 15px;">不是诗</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/02/09/front-end-md/">前端面试知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/07/es6-set/">ES6之Set个人解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/06/app-shell-md/">App Shell模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/vue-use-dev-normal/">vue.js组件使用和开发规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/02/nginx/">搭建Http静态服务器环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/关于js页面中oss在https下web直传的问题/">关于Js页面中oss在https下web直传的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/vue页面使用阿里oss上传图片功能-二/">Vue使用阿里oss上传图片功能2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/vue页面使用阿里oss上传功能-一/">Vue使用阿里oss上传图片功能1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/21/CentOS-安装Node-js、npm、htop、pm2/">CentOS 安装 Node.js、npm、htop、pm2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/vue-leancloud轻松打造个人博客/">Vue+leancloud轻松打造个人博客</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Nix_____.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+</code></pre>
+        </section>
+    </article>
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要介绍OSS管理控制台设置访问权限、角色等。"><span class="toc-number">1.</span> <span class="toc-text">主要介绍OSS管理控制台设置访问权限、角色等。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建子账号"><span class="toc-number">1.1.</span> <span class="toc-text">1.创建子账号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-新建授权策略"><span class="toc-number">1.2.</span> <span class="toc-text">2.新建授权策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-授权子账号访问MNS"><span class="toc-number">1.3.</span> <span class="toc-text">3.授权子账号访问MNS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-创建角色"><span class="toc-number">1.4.</span> <span class="toc-text">4.创建角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-授权策略访问角色"><span class="toc-number">1.5.</span> <span class="toc-text">4.授权策略访问角色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-注意事项"><span class="toc-number">1.6.</span> <span class="toc-text">5.注意事项</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
