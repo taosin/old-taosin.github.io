@@ -830,7 +830,9 @@ header {
     margin-top: 20px; }
   #tags .post-preview > a .post-subtitle {
     font-size: 12px; }
-
+.copyright{
+  display: none;
+}
 @media (min-width: 1032px) {
   #tags {
     width: 1000px; } }
