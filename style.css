@@ -3,7 +3,8 @@ html {
   background-color: #f4f5f5; }
 
 body {
-  font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-family: PingFang SC,Helvetica neue,Helvetica,Tahoma,lantinghei sc,Microsoft Yahei,sans-serif;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -830,9 +831,7 @@ header {
     margin-top: 20px; }
   #tags .post-preview > a .post-subtitle {
     font-size: 12px; }
-.copyright{
-  display: none;
-}
+
 @media (min-width: 1032px) {
   #tags {
     width: 1000px; } }

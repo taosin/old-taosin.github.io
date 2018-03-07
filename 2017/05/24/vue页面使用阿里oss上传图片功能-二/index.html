@@ -78,16 +78,16 @@
 
             
           </div>
-          <p><img src="http://blog.xinsay.cn/0e11af972a262b19c8f38df754c88348.png" alt=""></p>
+          <p><img src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png" alt=""></p>
 <h3 id="主要介绍OSS管理控制台设置访问权限、角色等。"><a href="#主要介绍OSS管理控制台设置访问权限、角色等。" class="headerlink" title="主要介绍OSS管理控制台设置访问权限、角色等。"></a>主要介绍OSS管理控制台设置访问权限、角色等。</h3><p><a href="https://github.com/taosin/alioss-js-upload" target="_blank" rel="noopener">demo源码</a></p>
-<p>进入控制台，鼠标移到右上角用户名处，点击“访问控制”,如下图：<br><img src="http://blog.xinsay.cn/oss_11.jpg" alt="enter image description here"><br>如果没有此功能，则将鼠标移至 <strong>产品</strong>  -&gt; <strong>管理与控制</strong>，点击 <strong>访问控制</strong>进入访问控制产品页<br><img src="http://blog.xinsay.cn/oss_123.png" alt="enter image description here"></p>
+<p>进入控制台，鼠标移到右上角用户名处，点击“访问控制”,如下图：<br><img src="http://images.iamtaoxin.com/oss_11.jpg" alt="enter image description here"><br>如果没有此功能，则将鼠标移至 <strong>产品</strong>  -&gt; <strong>管理与控制</strong>，点击 <strong>访问控制</strong>进入访问控制产品页<br><img src="http://images.iamtaoxin.com/oss_123.png" alt="enter image description here"></p>
 <h4 id="1-创建子账号"><a href="#1-创建子账号" class="headerlink" title="1.创建子账号"></a>1.创建子账号</h4><ul>
-<li>点击左侧的 <strong>用户管理</strong> -&gt; <strong>自定义授权策略</strong> -&gt;<strong>新建授权策略</strong> ， 如下图：<br><img src="http://blog.xinsay.cn/oss_14.jpg" alt="enter image description here"></li>
+<li>点击左侧的 <strong>用户管理</strong> -&gt; <strong>自定义授权策略</strong> -&gt;<strong>新建授权策略</strong> ， 如下图：<br><img src="http://images.iamtaoxin.com/oss_14.jpg" alt="enter image description here"></li>
 </ul>
 <h4 id="2-新建授权策略"><a href="#2-新建授权策略" class="headerlink" title="2.新建授权策略"></a>2.新建授权策略</h4><ul>
 <li>点击左侧的 <strong>策略管理</strong> -&gt; <strong>新建用户</strong> ， 如下图：</li>
 </ul>
-<p><img src="http://blog.xinsay.cn/oss_15.jpg" alt="enter image description here"></p>
+<p><img src="http://images.iamtaoxin.com/oss_15.jpg" alt="enter image description here"></p>
 <ul>
 <li>在弹出对话框中：选择授权策略模板（使用空模板）</li>
 <li>编辑授权策略并提交：修改 授权策略名称（自定义名称），备注，策略内容，并提交。<br><strong>示例</strong>：一个MNS授权策略内容模版:<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"Statement"</span>: [</span><br><span class="line">	　　	&#123;</span><br><span class="line">			<span class="string">"Action"</span>: <span class="string">"mns:*"</span>,</span><br><span class="line">			<span class="string">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">			<span class="string">"Resource"</span>: <span class="string">"acs:mns:*:*:*"</span> </span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	<span class="string">"Version"</span>: <span class="string">"1"</span></span><br><span class="line">　 　&#125;</span><br></pre></td></tr></table></figure>
@@ -97,16 +97,16 @@
 <h4 id="3-授权子账号访问MNS"><a href="#3-授权子账号访问MNS" class="headerlink" title="3.授权子账号访问MNS"></a>3.授权子账号访问MNS</h4><ul>
 <li>返回 <strong>用户管理</strong> ,找到第一步创建的子账号，点击右侧 <strong>授权</strong></li>
 <li>在弹出的对话框中，选择<strong>授权策略名称</strong>，并添加到右侧已选<strong>授权策略</strong>列表，点击 <strong>确定</strong> 提交，如下图：</li>
-<li><img src="http://blog.xinsay.cn/add_policy_to_user.jpg" alt="enter image description here"></li>
+<li><img src="http://images.iamtaoxin.com/add_policy_to_user.jpg" alt="enter image description here"></li>
 </ul>
 <h4 id="4-创建角色"><a href="#4-创建角色" class="headerlink" title="4.创建角色"></a>4.创建角色</h4><ul>
 <li>点击左侧的 <strong>角色管理</strong> -&gt; <strong>新建角色</strong>如下图：</li>
 </ul>
-<p><img src="http://blog.xinsay.cn/oss_13.jpg" alt="enter image description here"><br><img src="http://blog.xinsay.cn/oss_16.jpg" alt="enter image description here"></p>
+<p><img src="http://images.iamtaoxin.com/oss_13.jpg" alt="enter image description here"><br><img src="http://images.iamtaoxin.com/oss_16.jpg" alt="enter image description here"></p>
 <h4 id="4-授权策略访问角色"><a href="#4-授权策略访问角色" class="headerlink" title="4.授权策略访问角色"></a>4.授权策略访问角色</h4><ul>
 <li>点击左侧的 <strong>角色管理</strong> ,在右侧的角色列表中选择需要授权的角色，点击<strong>授权</strong>，如下图：</li>
 </ul>
-<p><img src="http://blog.xinsay.cn/oss_17.jpg" alt="enter image description here"></p>
+<p><img src="http://images.iamtaoxin.com/oss_17.jpg" alt="enter image description here"></p>
 <h4 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5.注意事项"></a>5.注意事项</h4><p>1.server端的代码中<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sts = <span class="keyword">new</span> STS(&#123;</span><br><span class="line">	accessKeyId: <span class="string">'子账号 accessKeyId'</span>,</span><br><span class="line">	accessKeySecret: <span class="string">'子账号 accessKeySecret'</span>,</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
 <pre><code>accessKeyId 和 accessKeySecret 为第一步创建的子用户的 key
 
