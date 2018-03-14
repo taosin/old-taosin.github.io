@@ -203,7 +203,10 @@
 </tbody>
 </table>
 <ul>
-<li>3.过滤器</li>
+<li><ol>
+<li>过滤器</li>
+</ol>
+</li>
 </ul>
 <p>2.0 删除了 1.0 所有自带的过滤器，将不再是传参的方式调用，如下：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;&#123;msg | mimi <span class="string">'12'</span> <span class="string">'5'</span>&#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>而现在2.0中，要使用过滤器，必须要自定义一个过滤器:<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'toDou'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">n,a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n&lt;<span class="number">10</span>?n+a+b:<span class="string">''</span>+n;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用过滤器</span></span><br><span class="line">&#123;&#123;msg | mimi(<span class="string">'12'</span>,<span class="string">'5'</span>)&#125;&#125;</span><br></pre></td></tr></table></figure></p>
