@@ -5,18 +5,20 @@
   
 
   
-  <title>Category: 胡言乱语 | Nix_____的小黑屋</title>
+  <title>使用axios发送POST请求时后端获取不到参数的问题 | Nix_____的小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Nix的小黑屋">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nix_____的小黑屋">
-<meta property="og:url" content="https://iamtaoxin.com/categories/胡言乱语/index.html">
+  <meta name="description" content="在使用 vue2 + axios + node.js + express 开发管理后台时，遇到了axios发送POST请求时后端获取不到参数的问题 ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。 终于，皇天不负有心人，在这里，还是找到了解决的办法。 axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;applicatio">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用axios发送POST请求时后端获取不到参数的问题">
+<meta property="og:url" content="https://iamtaoxin.com/2018/05/18/axios-post/index.html">
 <meta property="og:site_name" content="Nix_____的小黑屋">
-<meta property="og:description" content="Nix的小黑屋">
+<meta property="og:description" content="在使用 vue2 + axios + node.js + express 开发管理后台时，遇到了axios发送POST请求时后端获取不到参数的问题 ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。 终于，皇天不负有心人，在这里，还是找到了解决的办法。 axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;applicatio">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-18T09:22:29.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nix_____的小黑屋">
-<meta name="twitter:description" content="Nix的小黑屋">
+<meta name="twitter:title" content="使用axios发送POST请求时后端获取不到参数的问题">
+<meta name="twitter:description" content="在使用 vue2 + axios + node.js + express 开发管理后台时，遇到了axios发送POST请求时后端获取不到参数的问题 ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。 终于，皇天不负有心人，在这里，还是找到了解决的办法。 axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;applicatio">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,59 +67,66 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/07/25/一二句子/" class="archive-article-date">
-  <time datetime="2016-07-25T10:43:03.000Z" itemprop="datePublished">7月 25</time>
+        <section id="main"><article id="post-axios-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/18/axios-post/" class="article-date">
+  <time datetime="2018-05-18T09:21:39.000Z" itemprop="datePublished">2018-05-18</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/25/一二句子/">一二句子</a>
+    <h1 class="article-title" itemprop="name">
+      使用axios发送POST请求时后端获取不到参数的问题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/07/20/黑屋/" class="archive-article-date">
-  <time datetime="2016-07-20T14:38:13.000Z" itemprop="datePublished">7月 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/20/黑屋/">黑屋</a>
-    </h1>
-  
+        <p>在使用 <code>vue2</code> + <code>axios</code> + <code>node.js</code> + <code>express</code> 开发管理后台时，遇到了<em>axios发送POST请求时后端获取不到参数的问题</em> ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。</p>
+<p>终于，皇天不负有心人，<a href="https://zhuanlan.zhihu.com/p/27498996" target="_blank" rel="noopener">在这里</a>，还是找到了解决的办法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
+<p>由此看出，<code>axios</code> 在 <code>POST</code> 提交数据时也是使用的这种方式，在 <code>java</code> 和 <code>php</code> 可以获取到对应的 <code>request</code> 原始流数据获取到对应的值并将其序列化.</p>
+<p>但是这样的方式在 <code>express</code> 服务后端并不能获取到数据，因此 <code>express</code> 中使用的是 <code>body-parser</code> 去格式化前台传来的数据，具体实现看代码：</p>
+<p><code>`</code>js<br>//server</p>
+<p>‘use strict’<br>var express = require(‘express’)<br>var powerexpress = require(‘power-express’)(express)<br>var authority = require(‘./filter/authority’)<br>var app = powerexpress()</p>
+<p>// 使用 body-parse 格式化数据<br>var bodyParser = require(‘body-parser’)<br>app.use(bodyParser.urlencoded({<br>    extended: true<br>}))<br>app.use(bodyParser.json())</p>
+<p>var Server = require(‘./server’)<br>var cookieParser = require(‘cookie-parser’)<br>app.use(cookieParser())<br>require(‘./controllers/routes’)(app)<br>var appServer = new Server(app)<br>appServer.start()</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cjhbr9yu60006sgs6wzgy3km8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/05/17/arr-yes-or-no/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">判断一个对象是否为数组</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
