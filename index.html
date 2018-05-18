@@ -98,15 +98,12 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
 <p>由此看出，<code>axios</code> 在 <code>POST</code> 提交数据时也是使用的这种方式，在 <code>java</code> 和 <code>php</code> 可以获取到对应的 <code>request</code> 原始流数据获取到对应的值并将其序列化.</p>
 <p>但是这样的方式在 <code>express</code> 服务后端并不能获取到数据，因此 <code>express</code> 中使用的是 <code>body-parser</code> 去格式化前台传来的数据，具体实现看代码：</p>
-<p><code>`</code>js<br>//server</p>
-<p>‘use strict’<br>var express = require(‘express’)<br>var powerexpress = require(‘power-express’)(express)<br>var authority = require(‘./filter/authority’)<br>var app = powerexpress()</p>
-<p>// 使用 body-parse 格式化数据<br>var bodyParser = require(‘body-parser’)<br>app.use(bodyParser.urlencoded({<br>    extended: true<br>}))<br>app.use(bodyParser.json())</p>
-<p>var Server = require(‘./server’)<br>var cookieParser = require(‘cookie-parser’)<br>app.use(cookieParser())<br>require(‘./controllers/routes’)(app)<br>var appServer = new Server(app)<br>appServer.start()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> powerexpress = <span class="built_in">require</span>(<span class="string">'power-express'</span>)(express)</span><br><span class="line"><span class="keyword">var</span> authority = <span class="built_in">require</span>(<span class="string">'./filter/authority'</span>)</span><br><span class="line"><span class="keyword">var</span> app = powerexpress()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 body-parse 格式化数据</span></span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Server = <span class="built_in">require</span>(<span class="string">'./server'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line">app.use(cookieParser())</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./controllers/routes'</span>)(app)</span><br><span class="line"><span class="keyword">var</span> appServer = <span class="keyword">new</span> Server(app)</span><br><span class="line">appServer.start()</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cjhbr9yu60006sgs6wzgy3km8" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cjhbrbmr5000gu3s65sw1ewyh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -165,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cjhbr9yv30014sgs6l1ul5jxl" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cjhbrbmqy0009u3s6wlm5vmvm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -273,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/fe-interview/" data-id="cjhbr9yub000asgs6xxbo2qr5" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/17/fe-interview/" data-id="cjhbrbmre000mu3s6z55rm8vf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
@@ -379,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/14/house-tree-man/" data-id="cjhbr9yux000wsgs6s76vnbqa" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/03/14/house-tree-man/" data-id="cjhbrbmri000su3s6omhbn78x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/收藏/">收藏</a></li></ul>
@@ -551,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/10/vue-notes/" data-id="cjhbr9yve001msgs6r13rof3f" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/03/10/vue-notes/" data-id="cjhbrbms5001tu3s67khkm2fk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li></ul>
