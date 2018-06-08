@@ -67,6 +67,247 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-node-js-nginx-https" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/node-js-nginx-https/" class="article-date">
+  <time datetime="2018-06-08T08:13:33.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/node-js-nginx-https/">使用 Node.js + Nginx 部署 HTTPS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<ol>
+<li>安装证书</li>
+<li>nginx 反向代理</li>
+</ol>
+</blockquote>
+<h4 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install python-certbot-nginx </span><br><span class="line"></span><br><span class="line">$ sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
+<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>在 <code>/ete/nginx/site-available/default</code> 中:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location /api &#123;</span><br><span class="line">	proxy_pass      http://localhost:8089;</span><br><span class="line">	proxy_buffering on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启 <code>nginx</code>，重启 <code>node</code>。</p>
+<h3 style="color:#67C23A"><br>    至此。安装完毕！<br></h3>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/06/08/node-js-nginx-https/" data-id="cji5prnte001qex0d5o12ha5u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器部署/">服务器部署</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-front-end-optimization" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/27/front-end-optimization/" class="article-date">
+  <time datetime="2018-05-27T14:32:47.000Z" itemprop="datePublished">2018-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/27/front-end-optimization/">谈谈前端优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-优化的原则和方向"><a href="#1-优化的原则和方向" class="headerlink" title="1. 优化的原则和方向"></a>1. 优化的原则和方向</h3><h4 id="1-1-前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个："><a href="#1-1-前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个：" class="headerlink" title="1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个："></a>1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个：</h4><ul>
+<li>合理使用内存或缓存，减少请求；</li>
+<li>减少 CPU 或 GPU 的计算，达到更快的展现。</li>
+</ul>
+<hr>
+<h4 id="1-2-前端在性能优化的方向大致有两个："><a href="#1-2-前端在性能优化的方向大致有两个：" class="headerlink" title="1.2 前端在性能优化的方向大致有两个："></a>1.2 前端在性能优化的方向大致有两个：</h4><ul>
+<li>减少页面体积，提升网络加载;</li>
+<li>优化页面渲染</li>
+</ul>
+<hr>
+<h3 id="2-方向详情"><a href="#2-方向详情" class="headerlink" title="2. 方向详情"></a>2. 方向详情</h3><h4 id="2-1-较少页面体积，提升网络加载"><a href="#2-1-较少页面体积，提升网络加载" class="headerlink" title="2.1 较少页面体积，提升网络加载"></a>2.1 较少页面体积，提升网络加载</h4><ul>
+<li><p>静态资源的压缩合并（<strong>JS</strong> 代码压缩合并、 CSS 代码压缩合并、雪碧图）</p>
+<ul>
+<li>i. 压缩是为了减小文件的体积，减轻网络负载，达到更快的下载;</li>
+<li>ii. 合并和雪碧图都是为了减少文件的请求次数，但不是合并的就一定比没有合并时加载快，要考虑合并之后的体积，若文件合并之后太大也不利于性能优化，所以在实际项目中要做好权衡。</li>
+</ul>
+</li>
+<li><p>静态资源缓存（资源名称加 MD5 戳）</p>
+<ul>
+<li>i. 可以通过链接名称控制缓存： 通过前端构建工具为打包的文件添加 <em>MD5</em> 后缀，这样当打包上线时请求的链接将发生改变，可以防止由于缓存导致静态资源更新失效；</li>
+</ul>
+</li>
+<li><p>使用 <em>CDN</em> 让资源加载更快</p>
+</li>
+</ul>
+<h4 id="2-2-优化页面渲染"><a href="#2-2-优化页面渲染" class="headerlink" title="2.2 优化页面渲染"></a>2.2 优化页面渲染</h4><ul>
+<li><p>CSS 放在头部， <strong>JS</strong> 放后面</p>
+<ul>
+<li>i. 浏览器在渲染解析过程中，若遇到 <code>&lt;link href=&quot;...&quot;&gt;</code> 和 <code>&lt;script src=&quot;...&quot;&gt;</code> 这种外链加载 CSS 和 <strong>JS</strong> 的标签，浏览器会异步下载并解析执行。 CSS 放在头部是为了让浏览器今早解析执行 CSS 文件，渲染出页面的样式，若放在底部会出现渲染卡顿的情况，影响性能和体验。</li>
+<li>ii. 而当渲染过程中遇到 <code>script</code> 标签时就会执行 <strong>JS</strong> 代码，从而阻塞页面渲染，因为浏览器渲染和 <strong>JS</strong> 执行共用一个县城，而且这里必须是单线程操作，多线程会产生渲染 <strong>DOM</strong> 冲突。所以要将 <strong>JS</strong> 放在底部，等到页面渲染完成之后再去解析执行 JS，保证用户体验性。</li>
+<li>iii. 另外，JS 执行如果涉及 <strong>DOM</strong> 操作，得等待 <strong>DOM</strong> 解析完成才行，<strong>JS</strong> 放在底部执行是，HTML 肯定都解析成了 <strong>DOM</strong> 结构。 <strong>JS</strong> 如果放在 <strong>HTML</strong> 顶部，<strong>JS</strong> 执行的实行 <strong>HTML</strong> 还没来得及转换为 <strong>DOM</strong> 结构，可能会引起报错。</li>
+</ul>
+</li>
+<li><p>懒加载（图片来加载、下拉加载更多）</p>
+<ul>
+<li><p>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器悬案的时候会忽略掉，提高渲染性能）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"preview.png"</span> <span class="attr">data-src</span>=<span class="string">"realImg.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>减少 <strong>DOM</strong> 查询，对 <strong>DOM</strong> 查询做缓存，代码如下：</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 只查询一个DOM，缓存在 pList 中了</span></span><br><span class="line"><span class="keyword">var</span> pList = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; pList.length; i++)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//每次循环，都会查询 DOM，耗费性能</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>).length; i++)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>减少 <strong>DOM</strong> 操作，多个操作尽量合并在一起执行 （DocumentFragment）</p>
+<ul>
+<li><strong>DOM</strong> 操作是非常耗费性能的，因此插入多个标签时，先插入 <code>Fragment</code> 然后再统一插入 <strong>DOM</strong>。因为 <code>Fragment</code> 文档片段存在于内存中，并不在 <strong>DOM</strong> 树中，所以将子元素插入到文档片段时不会引起页面回流。</li>
+</ul>
+</li>
+<li><p>事件节流</p>
+<ul>
+<li>i. 防抖</li>
+<li>ii. 节流</li>
+</ul>
+</li>
+<li><p>尽早执行操作</p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 页面的全部资源加载完才会执行，包括图片、视频等</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// DOM 渲染完成即可执行，此时图片、视频等资源可能没有加载完成</span></span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 同 DOMContentLoaded</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <strong>预渲染</strong> 或者 <strong>SSR服务端渲染</strong>，数据直接输出到 <strong>HTML</strong>中，减少浏览器使用 <strong>JS</strong> 模板渲染页面 <strong>HTML</strong> 的时间，同时也有利于网站的 <strong>SEO</strong>。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/05/27/front-end-optimization/" data-id="cji5prnsw000tex0dr51vww4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-fe-interview-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/20/fe-interview-js/" class="article-date">
+  <time datetime="2018-05-20T09:27:00.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/fe-interview-js/">前端面试基础之JavaScript篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-说说-JS-的数据类型"><a href="#1-说说-JS-的数据类型" class="headerlink" title="1. 说说 JS 的数据类型"></a>1. 说说 JS 的数据类型</h3><h4 id="1-1-基本类型"><a href="#1-1-基本类型" class="headerlink" title="1.1 基本类型"></a>1.1 基本类型</h4><ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>symbol (ES6中新增)</li>
+</ul>
+<h4 id="1-2-引用类型"><a href="#1-2-引用类型" class="headerlink" title="1.2 引用类型"></a>1.2 引用类型</h4><ul>
+<li>Date</li>
+<li>RegExp</li>
+<li>Object</li>
+<li>Array</li>
+<li>Function ( 后三种为基本包装类型，特殊的引用类型，也算作基本类型)</li>
+</ul>
+<h4 id="1-3-基本类型保存在栈上，引用类型的引用保存在栈上，其对象保存在堆中。"><a href="#1-3-基本类型保存在栈上，引用类型的引用保存在栈上，其对象保存在堆中。" class="headerlink" title="1.3 基本类型保存在栈上，引用类型的引用保存在栈上，其对象保存在堆中。"></a>1.3 基本类型保存在栈上，引用类型的引用保存在栈上，其对象保存在堆中。</h4><h4 id="1-4-null-和-undefined-的区别？"><a href="#1-4-null-和-undefined-的区别？" class="headerlink" title="1.4 null 和 undefined 的区别？"></a>1.4 <code>null</code> 和 <code>undefined</code> 的区别？</h4><pre><code>- i. 含义不同：`null` 表示该处不该有值，而 `undefined` 表示该处有值，但还没有进行初始化
+- ii. 类型不同： `null` 的类型为 `Object`, `undefined` 的类型为 `undefined`
+</code></pre><h3 id="2-变量提升"><a href="#2-变量提升" class="headerlink" title="2. 变量提升"></a>2. 变量提升</h3><h3 id="3-对于闭包的理解，以及在什么场景下会使用到闭包？"><a href="#3-对于闭包的理解，以及在什么场景下会使用到闭包？" class="headerlink" title="3. 对于闭包的理解，以及在什么场景下会使用到闭包？"></a>3. 对于闭包的理解，以及在什么场景下会使用到闭包？</h3><h4 id="3-1-什么是闭包？"><a href="#3-1-什么是闭包？" class="headerlink" title="3.1 什么是闭包？"></a>3.1 什么是闭包？</h4><pre><code>闭包是指那些可以访问独立数据的函数。
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">'Mozilla'</span>;</span><br><span class="line">	<span class="comment">// name 是一个被 init创建的局部变量</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">// displayName() 是一个内部函数</span></span><br><span class="line">		alert(name);</span><br><span class="line">		<span class="comment">// 一个闭包使用在父函数中声明的变量</span></span><br><span class="line">	&#125;</span><br><span class="line">	displayName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+这段代码中，`displayName` 是一个典型的闭包，它能够访问它之外的 `name` 变量，并保存这个变量在它创建时的状态。这个特性非常实用，因为 `Javascript` 有很多奇怪的坑
+</code></pre><h3 id="4-谈谈对原型与原型链的了解度，有几种方式可以实现继承，用原型实现集成有什么缺点，要怎么解决？"><a href="#4-谈谈对原型与原型链的了解度，有几种方式可以实现继承，用原型实现集成有什么缺点，要怎么解决？" class="headerlink" title="4. 谈谈对原型与原型链的了解度，有几种方式可以实现继承，用原型实现集成有什么缺点，要怎么解决？"></a>4. 谈谈对原型与原型链的了解度，有几种方式可以实现继承，用原型实现集成有什么缺点，要怎么解决？</h3><h4 id="4-1-什么是原型链？"><a href="#4-1-什么是原型链？" class="headerlink" title="4.1 什么是原型链？"></a>4.1 什么是原型链？</h4><pre><code>原型链是 `Javascript` 实现继承最重要的一种方式。每一个对象都有自己的原型对象，根原型对象没有原型，所以其 `__proto__` 属性值为 `null` 。在调用时，如果访问的对象属性没有找到，`Javascript` 会顺着原型链继续往下找，直到触碰到根原型为止。
+</code></pre><h4 id="4-2-原型与原型链的区别是什么？"><a href="#4-2-原型与原型链的区别是什么？" class="headerlink" title="4.2 原型与原型链的区别是什么？"></a>4.2 原型与原型链的区别是什么？</h4><p><code>__proto__</code> 是隐式原型，指向创建这个对象的函数<code>(constructor)</code> 的 <code>prptotype</code>，用来构成原型链和实现基于原型的继承。</p>
+<p><code>protype</code> 是显式原型，用来实现基于原型的继承与属性的共享。每一个函数都具有 <code>prototype</code> 属性。</p>
+<h4 id="4-3-在面向对象语言中，继承分为两种："><a href="#4-3-在面向对象语言中，继承分为两种：" class="headerlink" title="4.3 在面向对象语言中，继承分为两种："></a>4.3 在面向对象语言中，继承分为两种：</h4><ul>
+<li>接口集成：只集成方法签名</li>
+<li><p>实现集成：继承实际的方法</p>
+<p>  因为 <code>Javascript</code> 没有继承的关键字，所以 JS 实现继承的方法很特殊，大概有以下几种：</p>
+<ul>
+<li><p>原型链继承(最常见)：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var Base = function ()&#123;</span><br><span class="line">	this.name = &apos;Base&apos;;</span><br><span class="line">	this.toString = function ()&#123;</span><br><span class="line">		return this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var Sub = function ()&#123;</span><br><span class="line">	Base.call(this);</span><br><span class="line">	this.name = &apos;Sub&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>这种继承解决了原型链继承的问题，但它也有一些弊端：使用 <code>instanceof</code> 运算符的时候会发现，它的实例并不是父类的实例（因为父类并没有在它的原型链上）。</p>
+<pre><code>- 实例继承
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var Base = function ()&#123;</span><br><span class="line">	this.name = &apos;Base&apos;;</span><br><span class="line">	this.toString = function ()&#123;</span><br><span class="line">		return this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var Sub = function()&#123;</span><br><span class="line">	var instance = new Base();</span><br><span class="line">	instance.name = &apos;Sub&apos;;</span><br><span class="line">	return instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>这种继承方法只能强行被归类为继承，因为它实际上是返回了一个父类的实例，与子类毫无关系。同样，这种方法也不支持多继承。</p>
+<pre><code>- 拷贝继承
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var Base = function ()&#123;</span><br><span class="line">	this.name = &apos;Base&apos;;</span><br><span class="line">	this.toString = function ()&#123;</span><br><span class="line">		return this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var Sub = function ()&#123;</span><br><span class="line">	var base = new Base();</span><br><span class="line">	for(var i in base)&#123;</span><br><span class="line">		sub.prototype[i] = base[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sub.prototype[&apos;name&apos;] = &apos;Sub&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>首先，只有可枚举的对象类型才能使用 <code>foreach</code> 的方式获取到。它的优点是可以实现多继承，缺点是不方便写，效率低。</p>
+<h3 id="5-iframe-的缺点有哪些？"><a href="#5-iframe-的缺点有哪些？" class="headerlink" title="5. iframe 的缺点有哪些？"></a>5. iframe 的缺点有哪些？</h3><h3 id="6-Ajax-的原生写法"><a href="#6-Ajax-的原生写法" class="headerlink" title="6. Ajax 的原生写法"></a>6. Ajax 的原生写法</h3><h3 id="7-为什么会有同源策略"><a href="#7-为什么会有同源策略" class="headerlink" title="7. 为什么会有同源策略"></a>7. 为什么会有同源策略</h3><h3 id="8-前端解决跨域的几种方式"><a href="#8-前端解决跨域的几种方式" class="headerlink" title="8. 前端解决跨域的几种方式"></a>8. 前端解决跨域的几种方式</h3><h3 id="9-怎么判断两个对象是否相等"><a href="#9-怎么判断两个对象是否相等" class="headerlink" title="9. 怎么判断两个对象是否相等"></a>9. 怎么判断两个对象是否相等</h3><h3 id="10-代码实现一个对象的深拷贝"><a href="#10-代码实现一个对象的深拷贝" class="headerlink" title="10. 代码实现一个对象的深拷贝"></a>10. 代码实现一个对象的深拷贝</h3><h3 id="11-从发送一个url地址到返回页面内容，中间发生了什么？"><a href="#11-从发送一个url地址到返回页面内容，中间发生了什么？" class="headerlink" title="11. 从发送一个url地址到返回页面内容，中间发生了什么？"></a>11. 从发送一个url地址到返回页面内容，中间发生了什么？</h3><h3 id="12-前端性能优化了解多少"><a href="#12-前端性能优化了解多少" class="headerlink" title="12. 前端性能优化了解多少"></a>12. 前端性能优化了解多少</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/05/20/fe-interview-js/" data-id="cji5prnsq000kex0dtwl5l6y5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-axios-post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/18/axios-post/" class="article-date">
@@ -103,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cjhbrbmr5000gu3s65sw1ewyh" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cji5prnsm000fex0ddk29dkre" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -162,396 +403,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cjhbrbmqy0009u3s6wlm5vmvm" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cji5prnsj000aex0dr9wcjxj0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-fe-interview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/17/fe-interview/" class="article-date">
-  <time datetime="2018-05-17T09:54:44.000Z" itemprop="datePublished">2018-05-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/17/fe-interview/">前端JS面试必须知道的几个点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-函数的三种定义方法"><a href="#1-函数的三种定义方法" class="headerlink" title="1.函数的三种定义方法"></a>1.函数的三种定义方法</h3><hr>
-<h4 id="1-1-函数声明"><a href="#1-1-函数声明" class="headerlink" title="1.1 函数声明"></a>1.1 函数声明</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"><span class="title">function</span> (<span class="params"></span>)</span>&#123;&#125; <span class="comment">//匿名函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line">() =&gt; &#123;&#125; <span class="comment">//如果 &#123;&#125; 内容只有一行 &#123;&#125; 和return 关键字可省略</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-2-函数表达式（函数字面量）"><a href="#1-2-函数表达式（函数字面量）" class="headerlink" title="1.2 函数表达式（函数字面量）"></a>1.2 函数表达式（函数字面量）</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">// <span class="title">ES6</span></span></span><br><span class="line"><span class="function"><span class="title">let</span> <span class="title">sum</span> = (<span class="params"></span>) =&gt; </span>&#123;&#125; <span class="comment">//如果&#123;&#125; 内容只有一行 &#123;&#125; 和return 关键字可省略</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-3-构造函数"><a href="#1-3-构造函数" class="headerlink" title="1.3 构造函数"></a>1.3 构造函数</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sum =  <span class="keyword">new</span> GetSum(num1, num2)</span><br></pre></td></tr></table></figure>
-<h4 id="1-4-三种方法的比较"><a href="#1-4-三种方法的比较" class="headerlink" title="1.4 三种方法的比较"></a>1.4 三种方法的比较</h4><ol>
-<li>函数声明有预解析，而且函数声明的优先级高于变量；</li>
-<li>使用 <code>Function</code> 构造函数定义函数的人方式是一个函数表达式，这种方式会导致解析两次代码，影响性能。第一次解析常规的 <code>Javascript</code> 代码，第二次解析传入构造函数的字符串。</li>
-</ol>
-<h3 id="2-ES5-中函数的-4种调用"><a href="#2-ES5-中函数的-4种调用" class="headerlink" title="2. ES5 中函数的 4种调用"></a>2. ES5 中函数的 4种调用</h3><hr>
-<h4 id="2-1-函数调用模式"><a href="#2-1-函数调用模式" class="headerlink" title="2.1 函数调用模式"></a>2.1 函数调用模式</h4><p>该模式包括 函数名() 和匿名函数调用， <code>this</code> 指向 <code>window</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>)   <span class="comment">//window </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getSum()</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)  <span class="comment">//window</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getSum =  <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)  <span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getSum()</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-方法调用"><a href="#2-2-方法调用" class="headerlink" title="2.2 方法调用"></a>2.2 方法调用</h4><p>对象.方法名(), <code>this</code> 指向 对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> objList = &#123;</span><br><span class="line">    name: <span class="string">'methods'</span>,</span><br><span class="line">    getSum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)  <span class="comment">//objList对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">objList.getSum()</span><br></pre></td></tr></table></figure>
-<h4 id="2-3-构造器调用"><a href="#2-3-构造器调用" class="headerlink" title="2.3 构造器调用"></a>2.3 构造器调用</h4><p><code>new</code> 构造函数名 (), <code>this</code> 指向构造函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">//指向构造函数Person</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> personOne = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
-<h4 id="2-4-间接调用"><a href="#2-4-间接调用" class="headerlink" title="2.4 间接调用"></a>2.4 间接调用</h4><p>利用 <code>call</code> 和 <code>apply</code> 来实现，<code>this</code> 就是 <code>call</code> 和 <code>apply</code> 对应的第一个参数，如果不传值或者第一个值为 <code>null</code> , <code>undefined</code> 时 指向 <code>window</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.apply(<span class="string">'我是apply改变的this值'</span>);</span><br><span class="line">foo.call(<span class="string">'我是call改变的this值'</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="3-ES6中函数的调用"><a href="#3-ES6中函数的调用" class="headerlink" title="3. ES6中函数的调用"></a>3. ES6中函数的调用</h3><hr>
-<p>箭头函数不可以当作构造函数，也就是不能用 <code>new</code> 命令实例化一个对象，否则会抛出一个错误</p>
-<p>箭头函数的 <code>this</code> 是和定义时有关，和调用无关</p>
-<p>调用就是函数调用模式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">//window</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arrowFun = <span class="function"><span class="params">()</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">arrowFun()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arrowObj = &#123;</span><br><span class="line">    arrFun: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//arrowObj</span></span><br><span class="line">        &#125;)()</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">arrowObj.arrFun</span><br></pre></td></tr></table></figure>
-<h3 id="4-call-apply-和-bind"><a href="#4-call-apply-和-bind" class="headerlink" title="4. call, apply 和 bind"></a>4. <code>call</code>, <code>apply</code> 和 <code>bind</code></h3><hr>
-<ol>
-<li>IE5之前不支持 <code>call</code> 和 <code>apply</code>，<code>bind</code> 是 <strong>ES5</strong> 之后出来的；</li>
-<li><code>call</code> 和 <code>apply</code> 可以调用函数，改变 <code>this</code>,实现继承和借用别的对象的方法。</li>
-</ol>
-<h4 id="4-1-call-和-apply-定义"><a href="#4-1-call-和-apply-定义" class="headerlink" title="4.1 call 和 apply 定义"></a>4.1 <code>call</code> 和 <code>apply</code> 定义</h4><p>调用方法，用一个对象替换掉另一个对象 (this)</p>
-<p>对象.call(新 this 对象，实参1，实参2，实参3…)</p>
-<p>对象.apply(新 this 对象，[实参1，实参2，实参3…])</p>
-<h4 id="4-2-call-和apply-用法"><a href="#4-2-call-和apply-用法" class="headerlink" title="4.2 call 和apply 用法"></a>4.2 <code>call</code> 和<code>apply</code> 用法</h4><h5 id="4-2-1-间接调用函数，改变作用域的-this-值；"><a href="#4-2-1-间接调用函数，改变作用域的-this-值；" class="headerlink" title="4.2.1 间接调用函数，改变作用域的 this 值；"></a>4.2.1 间接调用函数，改变作用域的 <code>this</code> 值；</h5><h5 id="4-2-2-劫持其他对象的方法"><a href="#4-2-2-劫持其他对象的方法" class="headerlink" title="4.2.2 劫持其他对象的方法"></a>4.2.2 劫持其他对象的方法</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    logName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bar = &#123;</span><br><span class="line">    name: <span class="string">'李四'</span></span><br><span class="line">&#125;;</span><br><span class="line">foo.logName.call(bar); <span class="comment">//李四</span></span><br><span class="line"><span class="comment">// 实质是call改变了foo的this指向为bar，并调用函数</span></span><br></pre></td></tr></table></figure>
-<h5 id="4-2-3-两个函数实现继承"><a href="#4-2-3-两个函数实现继承" class="headerlink" title="4.2.3 两个函数实现继承"></a>4.2.3 两个函数实现继承</h5><div style="font-size:20px"><br><br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name;</span><br><span class="line">   <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    Animal.call(<span class="keyword">this</span>, name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">'Black Cat'</span>);</span><br><span class="line">cat.showName(); <span class="comment">// Black Cat</span></span><br></pre></td></tr></table></figure><br><br></div>
-
-<h5 id="4-2-4-为类数组-arguments-和nodeList-添加数组方法-push，pop"><a href="#4-2-4-为类数组-arguments-和nodeList-添加数组方法-push，pop" class="headerlink" title="4.2.4 为类数组(arguments 和nodeList)添加数组方法 push，pop"></a>4.2.4 为类数组(<code>arguments</code> 和<code>nodeList</code>)添加数组方法 <code>push</code>，<code>pop</code></h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.push.call(<span class="built_in">arguments</span>,<span class="string">'王五'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">//['张三','李四','王五']</span></span><br><span class="line">&#125;)(<span class="string">'张三'</span>,<span class="string">'李四'</span>);</span><br></pre></td></tr></table></figure>
-<h5 id="4-2-5-合并数组"><a href="#4-2-5-合并数组" class="headerlink" title="4.2.5 合并数组"></a>4.2.5 合并数组</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1,arr2); <span class="comment">//将arr2合并到了arr1中</span></span><br></pre></td></tr></table></figure>
-<h5 id="4-2-6-求数组最大值"><a href="#4-2-6-求数组最大值" class="headerlink" title="4.2.6 求数组最大值"></a>4.2.6 求数组最大值</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,arr)</span><br></pre></td></tr></table></figure>
-<h5 id="4-2-7-判断字符类型"><a href="#4-2-7-判断字符类型" class="headerlink" title="4.2.7 判断字符类型"></a>4.2.7 判断字符类型</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)</span><br><span class="line"><span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-JS常见的四种设计模式"><a href="#5-JS常见的四种设计模式" class="headerlink" title="5. JS常见的四种设计模式"></a>5. JS常见的四种设计模式</h3><hr>
-<h4 id="5-1-工厂模式"><a href="#5-1-工厂模式" class="headerlink" title="5.1 工厂模式"></a>5.1 工厂模式</h4><p>简单的工厂模式可以理解为解决多个相似的问题；</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreatePerson</span>(<span class="params">name,age,sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = name;</span><br><span class="line">    obj.age = age;</span><br><span class="line">    obj.sex = sex;</span><br><span class="line">    obj.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> CreatePerson(<span class="string">'Tom'</span>,<span class="string">'28'</span>,<span class="string">'男'</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> CreatePerson(<span class="string">'Lisa'</span>,<span class="string">'21'</span>,<span class="string">'女'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p1.name); <span class="comment">// longen</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.age);  <span class="comment">// 28</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sex);  <span class="comment">// 男</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.sayName()); <span class="comment">// longen</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(p2.name);  <span class="comment">// tugenhua</span></span><br><span class="line"><span class="built_in">console</span>.log(p2.age);   <span class="comment">// 27</span></span><br><span class="line"><span class="built_in">console</span>.log(p2.sex);   <span class="comment">// 女</span></span><br><span class="line"><span class="built_in">console</span>.log(p2.sayName()); <span class="comment">// tugenhua</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-2-单例模式"><a href="#5-2-单例模式" class="headerlink" title="5.2 单例模式"></a>5.2 单例模式</h4><p>只能被实例化(构造函数给实例添加属性与方法)一次</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//单体模式</span></span><br><span class="line"><span class="keyword">var</span> Singleton = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取实例对象</span></span><br><span class="line"><span class="keyword">var</span> getInstance = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!instance)&#123; <span class="comment">//相当于一个一次性阀门，只能实例化一次</span></span><br><span class="line">            instance = <span class="keyword">new</span> Singleton(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试单体模式的实例，所以 a===b</span></span><br><span class="line"><span class="keyword">var</span> a = getInstance(<span class="string">'aa'</span>);</span><br><span class="line"><span class="keyword">var</span> a = getInstance(<span class="string">'bb'</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="5-3-沙箱模式"><a href="#5-3-沙箱模式" class="headerlink" title="5.3 沙箱模式"></a>5.3 沙箱模式</h4><p>将一些函数放到自执行函数里面，但要闭包暴露接口，用变量接受暴露的接口，再调用里面的值，否则无法使用里面的值。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sanboxModel = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        sayName: sayName,</span><br><span class="line">        sayAge: sayAge</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<h4 id="5-4-发布者订阅模式"><a href="#5-4-发布者订阅模式" class="headerlink" title="5.4 发布者订阅模式"></a>5.4 发布者订阅模式</h4><p>就例如我们关注了某一个公众号，然后他对应的有新的消息就会给你推送。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//发布者与订阅模式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> shoeObj = &#123;&#125;; <span class="comment">// 定义发布者</span></span><br><span class="line">shoeObj.list = []; <span class="comment">//缓存列表 存放订阅者回调函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 增加订阅者</span></span><br><span class="line"></span><br><span class="line">shoeObj.listen = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    shoeObj.list.push(fn);  <span class="comment">// 订阅消息添加到缓存列表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布消息</span></span><br><span class="line">shoeObj.trigger = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, fn; fn = <span class="keyword">this</span>.list[i++];)&#123;</span><br><span class="line">        fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">//第二个参数只是改变fn的this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小红订阅如下消息</span></span><br><span class="line">shoeObj.listen(<span class="function"><span class="keyword">function</span>(<span class="params">color,size</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'颜色是: '</span>+ color);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'尺码是：'</span> + size);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小花订阅如下消息</span></span><br><span class="line">shoeObj.listen(<span class="function"><span class="keyword">function</span>(<span class="params">color,size</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'再次打印颜色是: '</span>+ color);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'再次打印尺码是：'</span> + size);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">shoeObj.trigger(<span class="string">"红色"</span>, <span class="number">40</span>);</span><br><span class="line">shoeObj.trigger(<span class="string">"黑色"</span>, <span class="number">42</span>);</span><br></pre></td></tr></table></figure>
-<p>代码实现逻辑是用数组存储订阅者，发布者毁掉函数里面通知的方式是遍历订阅者数组，并将发布者内容传入订阅者数组</p>
-<h3 id="6-原型链"><a href="#6-原型链" class="headerlink" title="6. 原型链"></a>6. 原型链</h3><hr>
-<h4 id="6-1-定义"><a href="#6-1-定义" class="headerlink" title="6.1 定义"></a>6.1 定义</h4><p>对象继承属性的一个链条</p>
-<h4 id="6-2-构造函数，实例与原型对象的关系"><a href="#6-2-构造函数，实例与原型对象的关系" class="headerlink" title="6.2 构造函数，实例与原型对象的关系"></a>6.2 构造函数，实例与原型对象的关系</h4><p><img src="https://segmentfault.com/img/bV8wcf?w=638&amp;h=241/view" alt="image"></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;<span class="keyword">this</span>.name = name&#125;; <span class="comment">//person是构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o3personTwo = <span class="keyword">new</span> person(<span class="string">'personTwo'</span>); <span class="comment">//personTwo是实例</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://segmentfault.com/img/bV8wdm?w=534&amp;h=333" alt="iamge"></p>
-<p>原型对象都有一个默认的<code>constructor</code>属性指向构造函数</p>
-<h4 id="6-3-创建实例的方法"><a href="#6-3-创建实例的方法" class="headerlink" title="6.3 创建实例的方法"></a>6.3 创建实例的方法</h4><h5 id="6-3-1-字面量"><a href="#6-3-1-字面量" class="headerlink" title="6.3.1 字面量"></a>6.3.1 字面量</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="string">'name'</span>:<span class="string">'张三'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="6-3-2-Object-构造函数创建"><a href="#6-3-2-Object-构造函数创建" class="headerlink" title="6.3.2 Object 构造函数创建"></a>6.3.2 <code>Object</code> 构造函数创建</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> Obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">Obj.name = <span class="string">'张三'</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="6-3-3-使用工厂模式创建对象"><a href="#6-3-3-使用工厂模式创建对象" class="headerlink" title="6.3.3 使用工厂模式创建对象"></a>6.3.3 使用工厂模式创建对象</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    o.name = name;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">'张三'</span>);</span><br></pre></td></tr></table></figure>
-<h5 id="6-3-4-使用构造函数创建对象"><a href="#6-3-4-使用构造函数创建对象" class="headerlink" title="6.3.4 使用构造函数创建对象"></a>6.3.4 使用构造函数创建对象</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'张三'</span>)；</span><br></pre></td></tr></table></figure>
-<h4 id="6-4-new-运算符"><a href="#6-4-new-运算符" class="headerlink" title="6.4 new 运算符"></a>6.4 <code>new</code> 运算符</h4><ol>
-<li>创建了一个新对象；</li>
-<li><code>this</code>指向构造函数；</li>
-<li>构造函数有返回，会替换 <code>new</code> 出来的对象，如果没有就是 <code>new</code> 出来的对象</li>
-<li>手动封装一个 <code>new</code> 运算符</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> new2 = <span class="function"><span class="keyword">function</span> (<span class="params">func</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="built_in">Object</span>.create(func.protorype);   <span class="comment">//创建对象</span></span><br><span class="line">    <span class="keyword">var</span> k = func.call(o);    <span class="comment">//改变this指向，把结果赋给k</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> k === <span class="string">'object'</span>)&#123;   <span class="comment">//判断k的类型是不是对象</span></span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> o;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6-5-对象的原型链"><a href="#6-5-对象的原型链" class="headerlink" title="6.5 对象的原型链"></a>6.5 对象的原型链</h4><p><img src="https://segmentfault.com/img/bV8wf4?w=570&amp;h=709" alt="image"></p>
-<h3 id="7-继承的方式"><a href="#7-继承的方式" class="headerlink" title="7. 继承的方式"></a>7. 继承的方式</h3><p>JS是一门弱类型动态语言，封装和继承是他的两大特性：</p>
-<h4 id="7-1-原型链继承"><a href="#7-1-原型链继承" class="headerlink" title="7.1 原型链继承"></a>7.1 原型链继承</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/fe-interview/" data-id="cjhbrbmre000mu3s6z55rm8vf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-house-tree-man" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/14/house-tree-man/" class="article-date">
-  <time datetime="2018-03-14T02:57:19.000Z" itemprop="datePublished">2018-03-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/理论收藏/">理论收藏</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/14/house-tree-man/">房、树、人绘画投射分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>房树人测验(Tree-House-Person)，又称屋树人测验，它开始于John Buck的“画树测验”。John Buck于1948年发明此方法，受测者只需在三张白纸上分别画屋、树及人就完成测试。而动态屋、树、人分析学则由RobertC.Burn在1970年发明，受测者会在同一张纸上画屋、树及人。这三者有互动作用，例如从屋及人的位置与距离都可看出受测者与家庭的关系，所以这两种分析学多数会结合使用。</p>
-</blockquote>
-<ul>
-<li><p>房：人们成长的场所，投射恩新的安全感。</p>
-<ul>
-<li>画楼房：智商较高；</li>
-<li>房子画得像庙宇：两个极端，要不就是人才，或者就是怪异的行为表达； </li>
-<li>强调地面：缺乏安全感；</li>
-<li>瓦片画得很仔细：追求细节和完美；</li>
-<li>房子侧面画楼梯：想回避和间接性接触；</li>
-<li>画烟囱：向上的直烟暗示受测者需要出气筒；向下的烟代表受测者内心的压力；</li>
-<li>一般人画的烟方向会向右，如果向左可能有精神分裂的倾向。 </li>
-</ul>
-</li>
-<li><p>树：象征感情，投射人们对环境的体验 </p>
-<ul>
-<li>单线条的树：受测者内心忧郁，如果除了单线条的树外还画了落叶，受测者很可能在10天之内有自杀倾向； </li>
-<li>嫩叶：受测者渴望或正在重新开始；树干涂黑或树根呈鹰爪状：受测者潜在的攻击意识较强； </li>
-<li>柳树：男性受测者较女性化；女性受测者则较追求完美； </li>
-<li>女性画松树：追求成熟，较男性化；白桦树：受测者较敏感；画上树疤：受测者曾受过心理创伤，可以根据树疤在树干上的位置判断受创的大致年纪； </li>
-<li>画果实：投射到现实生活中，他们如果压抑或遇到挫折时会退行为儿童行为；高山上一棵树：受测者可能有性行为问题或恋母情结。 </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>人：投射受测者的自我形象和人格完整性 </p>
-<ul>
-<li>符号化的人：受测者有掩饰性，说谎的能力较强；</li>
-<li>头：头画得越大，受测者的心理年龄越小。一般12岁以后不应该出现大头小身体的样子，否则可能智力有问题。如果画的是人的背影，这是在人际关系中过分警戒、不愿意暴露自己的表现。 </li>
-<li>耳朵：孩子不画耳朵可能有逆反心理，不愿家长口罗嗦；画大耳朵的受测者如果画的不是卡通形象，可能比较敏感； </li>
-<li>鼻子：画纽扣鼻的人可能智力有问题；成人画出鼻梁则表示对性的关注； </li>
-<li>画牙齿：受测者有情绪、言语攻击性；</li>
-<li>眼睛：眼睛画得太大的人比较敏感、多疑、偏执；画眼睫毛的人对美过分关注；不画瞳孔的人在人际交往中有回避倾向； </li>
-<li>手：一般人只画形状，画手指的人太注意细节；手代表对环境的支配，伸得越开支配力越强，但一般在90度以下；画中手放到后面的受测者一般有被动攻击行为，如果是儿童则可能经常掩饰自己的错误行为； </li>
-<li>脚：代表人的活动力，分得越开活动力越强；反之则比较拘谨，不善与人交往； </li>
-<li>头发：把头发画得竖起来的受测者攻击性较强；</li>
-<li>衣服：画口袋、纽扣的受测者比较注意细节；如果很注重对称则有强迫症的倾向； </li>
-<li>裸体人：受测者有品行障碍或显露癖；</li>
-<li>画出内脏：受测者有精神分裂症的倾向。 </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>房树人图在白纸中的位置 </p>
-<ul>
-<li><p>位置：</p>
-<ul>
-<li>居中：受测者自我意识较强，以自我为中心；</li>
-<li>偏左：受测者留恋过去；</li>
-<li>偏右：受测者憧憬未来；</li>
-<li>偏上：受测者喜欢幻想；</li>
-<li>偏下：受测者注重现实，对安全较为关注；</li>
-<li>画在角落：受测者可能有病理性疾病。 </li>
-</ul>
-</li>
-<li><p>其他：</p>
-<ul>
-<li>在房树人之外添加很多附加物（如太阳等），这是对环境关注的表现。在房子外面画上了篱笆，则是他们缺乏安全感的表现。还有很多人画的房、树、人都是符号化的，这表明很多现代人心理防御性强，善于掩饰自己。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/14/house-tree-man/" data-id="cjhbrbmri000su3s6omhbn78x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/收藏/">收藏</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vue-notes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/10/vue-notes/" class="article-date">
-  <time datetime="2018-03-10T03:41:58.000Z" itemprop="datePublished">2018-03-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端笔记/">前端笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/10/vue-notes/">Vue常见知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-什么是-MVVM"><a href="#1-什么是-MVVM" class="headerlink" title="1. 什么是 MVVM?"></a>1. 什么是 MVVM?</h1><blockquote>
-<p>MVVM是 <code>Model-View-ViewModel</code> 的缩写。它是一种设计思想。<code>Model</code> 层代表数据模型，也可以在 <code>Model</code> 中定义数据修改和操作的业务逻辑；<code>View</code> 代表UI组件，它负责将数据模型转化成 UI展现出来；<code>ViewModel</code> 是一个同步 <code>View</code> 和 <code>Model</code> 的对象。</p>
-</blockquote>
-<p>在<strong>MVVM</strong>架构下，<code>View</code> 和 <code>Model</code> 之间并没有直接的联系，而是通过 <code>ViewModel</code> 进行交互，<code>Model</code> 和 <code>ViewModel</code>之间的交互是双向的，因此 <code>View</code> 数据的变化会同步到 <code>Model</code> 中，而 <code>Model</code> 数据的变化也会立即反应到 <code>View</code> 上。</p>
-<p><code>ViewModel</code> 通过双向数据绑定把 <code>View</code> 层 和 <code>Mode</code> 层连接了起来，而 <code>View</code> 和 <code>Model</code> 之间的同步工作完全是自动的，不需要手动去操作 <strong>DOM</strong> 节点，不需要灌输主句状态的同步问题，复杂的数据状态维护完全由 <strong>MVVM</strong> 来统一管理。</p>
-<h1 id="2-MVVM-和-MVC-的区别？"><a href="#2-MVVM-和-MVC-的区别？" class="headerlink" title="2.MVVM 和 MVC 的区别？"></a>2.MVVM 和 MVC 的区别？</h1><p> <strong>MVC</strong> 和 <strong>MVVM</strong> 都是一种设计思想。主要区别是 <strong>MVC</strong> 中 <code>Controller</code> 演变成了 <strong>MVVM</strong> 中的 <code>ViewModel</code>。 <strong>MVVM* 主要解决了 <code>MCV</code> 中大量的 </strong>DOM** 操作是页面渲染性能降低，加载速度变慢，从而影响了用户体验。 而且当 <code>Model</code> 层数据频繁发生变化时，开发者需要手动更新 <code>View</code> 层。</p>
-<h1 id="3-Vue的优点是什么？"><a href="#3-Vue的优点是什么？" class="headerlink" title="3.Vue的优点是什么？"></a>3.Vue的优点是什么？</h1><ul>
-<li><p>1.低耦合。视图层(View) 可以独立于 <code>Model</code> 变化和修改，一个 <code>ViewModel</code> 可以绑定到不同改的 <code>View</code> 上，当 <code>View</code> 发生变化 <code>Model</code> 可以不变，当 <code>Model</code> 变化的时候 <code>View</code> 也可以不变。</p>
-</li>
-<li><p>2.可重用性。你可以把一些视图层逻辑放在一个 <code>ViewModel</code> 中，让很多 <code>View</code> 重用这段视图逻辑。</p>
-</li>
-<li><p>3.独立开发。开发人员可以专注于业务逻辑和数据的开发(<code>ViewModel</code>)，设计人员可以专注于页面设计，使用 <code>Expression Blend</code> 可以很容易设计界面并生成 <strong>xml</strong> 代码。</p>
-</li>
-<li><p>4.可测试。界面素来是比较难于测试的，而现在测试可以针对 <code>ViewModel</code> 来写专门的测试代码。</p>
-</li>
-</ul>
-<h1 id="4-Vue2-0生命周期是什么？"><a href="#4-Vue2-0生命周期是什么？" class="headerlink" title="4.Vue2.0生命周期是什么？"></a>4.Vue2.0生命周期是什么？</h1><blockquote>
-<p><strong>Vue</strong> 的生命周期总共有 创建前/后，载入前/后，销毁前/后。</p>
-</blockquote>
-<ul>
-<li><p>创建前/后：在 <code>beforeCreate</code> 阶段，<em>Vue</em> 实例的挂载元素 <code>el</code> 和数据对象 <code>data</code> 都为 <code>undefined</code> ，还未初始化。在 <code>create</code> 阶段，<em>vue</em> 实例的数据对象  <em>data</em> 有了值，但 <em>el</em> 仍然没有。</p>
-</li>
-<li><p>载入前/后：在 <code>beforeMount</code> 阶段，<em>Vue</em> 实例的 <code>$el</code> 和 <code>data</code> 都初始化了，但还是挂载之前虚拟的 <code>DOM</code> 节点，<code>data.message</code> 还未替换。在 <code>mounted</code> 阶段，<em>Vue</em> 实例挂载完成，<code>data.message</code> 成功渲染。</p>
-</li>
-<li><p>更新前/后：当 <code>data</code> 发生变化时，会触发 <code>beforeUpdate</code> 和 <code>update</code> 方法。</p>
-</li>
-<li><p>销毁前/后: 在执行 <code>destroy</code> 方法后，对 <code>data</code>的改变不会再触发周期函数，说明此时 <em>Vue</em> 实例已经解除了事件监听以及和 <code>DOM</code> 的绑定，但是 <code>DOM</code>结构依然存在。</p>
-</li>
-</ul>
-<h1 id="5-Vue1-0-和-Vue2-0的对比"><a href="#5-Vue1-0-和-Vue2-0的对比" class="headerlink" title="5. Vue1.0 和 Vue2.0的对比"></a>5. <a href="https://v1.vuejs.org/guide/" target="_blank" rel="noopener">Vue1.0</a> 和 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue2.0</a>的对比</h1><ul>
-<li>1.片段代码: 在 <code>Vue2.0</code> 中，每个组件模板中，必须有一个根元素，来包裹所有的元素。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 之前:   在1.0使用时完全没问题 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>我是组件<span class="tag">&lt;/<span class="name">h3</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>我是加粗标签<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 现在:  必须有根元素，包裹住所有的代码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"aaa"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">h3</span>&gt;</span>我是组件<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">strong</span>&gt;</span>我是加粗标签<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>2.生命周期见下表</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">vue1.0</th>
-<th style="text-align:left">vue2.0</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">init</td>
-<td style="text-align:left">beforeCreate</td>
-<td style="text-align:left">组件实例刚被创建，组件属性计算之前，如 data 属性等。</td>
-</tr>
-<tr>
-<td style="text-align:left">created</td>
-<td style="text-align:left">created</td>
-<td style="text-align:left">组件实例创建完成，属性已绑定，但 <strong>DOM</strong> 还未生成，<code>$el</code>属性还不存在。</td>
-</tr>
-<tr>
-<td style="text-align:left">beforeCompile</td>
-<td style="text-align:left">boforeMount</td>
-<td style="text-align:left">模板编译/挂载之前</td>
-</tr>
-<tr>
-<td style="text-align:left">compiled</td>
-<td style="text-align:left">mounted</td>
-<td style="text-align:left">模板编辑/挂载之后</td>
-</tr>
-<tr>
-<td style="text-align:left">ready</td>
-<td style="text-align:left">mounted</td>
-<td style="text-align:left">模板编译/挂载之后（不保证组件已在 <code>document</code> 中）</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">beforeUpdate</td>
-<td style="text-align:left">组件更新之前</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">updated</td>
-<td style="text-align:left">组件更新之后</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">activated</td>
-<td style="text-align:left">for <code>keep-alive</code> ，组件被激活时调用</td>
-</tr>
-<tr>
-<td style="text-align:left">-</td>
-<td style="text-align:left">deactivated</td>
-<td style="text-align:left">for <code>keep-alive</code> ，组件被移除时调用</td>
-</tr>
-<tr>
-<td style="text-align:left">attached</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">-</td>
-</tr>
-<tr>
-<td style="text-align:left">deattached</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">-</td>
-</tr>
-<tr>
-<td style="text-align:left">beforeDestroy</td>
-<td style="text-align:left">beforeDestroy</td>
-<td style="text-align:left">组件销毁前调用</td>
-</tr>
-<tr>
-<td style="text-align:left">destroyed</td>
-<td style="text-align:left">destroyed</td>
-<td style="text-align:left">组件销毁后调用</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>3.过滤器</li>
-</ul>
-<p>2.0 删除了 1.0 所有自带的过滤器，将不再是传参的方式调用，如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;&#123;msg | mimi <span class="string">'12'</span> <span class="string">'5'</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>而现在2.0中，要使用过滤器，必须要自定义一个过滤器:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'toDou'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">n,a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n&lt;<span class="number">10</span>?n+a+b:<span class="string">''</span>+n;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用过滤器</span></span><br><span class="line">&#123;&#123;msg | mimi(<span class="string">'12'</span>,<span class="string">'5'</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>4.<code>v-for</code>循环</p>
-<ul>
-<li><p>在1.0中循环渲染时会使用到 <code>tranck-by=&quot;$indec&quot;</code>来提高for循环的性能，而在2.0，使用重复数据将不会报错，同时也去掉了一些隐式变量如：index 、 key，如果要用到 <code>index</code> 和 <code>key</code> 则可通过 ES6的语法来获取：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">v-for="(val,index) in rows"</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于整数循环，1.0的整数循环是从0开始的，2.0的整数循环则是从1开始的。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/10/vue-notes/" data-id="cjhbrbms5001tu3s67khkm2fk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li></ul>
 
     </footer>
   </div>
@@ -564,7 +419,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -585,7 +440,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
     </div>
   </div>
 
@@ -595,7 +450,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 17.5px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 12.5px;">前端面试</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
+      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 17.5px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
     </div>
   </div>
 
@@ -604,7 +459,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li></ul>
     </div>
   </div>
 
@@ -617,23 +472,23 @@
       <ul>
         
           <li>
+            <a href="/2018/06/08/node-js-nginx-https/">使用 Node.js + Nginx 部署 HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/27/front-end-optimization/">谈谈前端优化</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/20/fe-interview-js/">前端面试基础之JavaScript篇</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
           </li>
         
           <li>
             <a href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/17/fe-interview/">前端JS面试必须知道的几个点</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/14/house-tree-man/">房、树、人绘画投射分析</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/vue-notes/">Vue常见知识点</a>
           </li>
         
       </ul>
