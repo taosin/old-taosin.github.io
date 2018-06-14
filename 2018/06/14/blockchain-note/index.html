@@ -5,20 +5,20 @@
   
 
   
-  <title>判断一个对象是否为数组 | Nix_____的小黑屋</title>
+  <title>区块链学习笔记 | Nix_____的小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何判断一个对象是不是 Array   Array.isArrya(obj) 调用数组的 isArray 方法 ;  obj instanceOf Array 判断对象是否是 Array 的示例 ;  Object.prototype.toString.call(obj) ===‘[object Array]’Object.prototype.toString 方法会取得对象的一个内部属性 ［［">
-<meta name="keywords" content="javascript">
+  <meta name="description" content="参考来源: 区块链开发入门：从 0 到 1 构建基于以太坊智能合约的 ICO DApp  账户？交易？区块？区块链？  账户 (Account) 使用户在银行的户头+密码的组合，在区块链世界中也是去次，不论是比特币还是以太坊的账户都是由地址、公钥、私钥这3部分构成的，其中地址相当于用户名，而公钥+私钥相当于密码，尤其是私钥，丢失或者泄露就意味着失去账户的控制权；  交易 (Transaction)">
+<meta name="keywords" content="区块链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="判断一个对象是否为数组">
-<meta property="og:url" content="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/index.html">
+<meta property="og:title" content="区块链学习笔记">
+<meta property="og:url" content="https://iamtaoxin.com/2018/06/14/blockchain-note/index.html">
 <meta property="og:site_name" content="Nix_____的小黑屋">
-<meta property="og:description" content="如何判断一个对象是不是 Array   Array.isArrya(obj) 调用数组的 isArray 方法 ;  obj instanceOf Array 判断对象是否是 Array 的示例 ;  Object.prototype.toString.call(obj) ===‘[object Array]’Object.prototype.toString 方法会取得对象的一个内部属性 ［［">
+<meta property="og:description" content="参考来源: 区块链开发入门：从 0 到 1 构建基于以太坊智能合约的 ICO DApp  账户？交易？区块？区块链？  账户 (Account) 使用户在银行的户头+密码的组合，在区块链世界中也是去次，不论是比特币还是以太坊的账户都是由地址、公钥、私钥这3部分构成的，其中地址相当于用户名，而公钥+私钥相当于密码，尤其是私钥，丢失或者泄露就意味着失去账户的控制权；  交易 (Transaction)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-17T10:05:06.525Z">
+<meta property="og:updated_time" content="2018-06-14T10:32:47.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断一个对象是否为数组">
-<meta name="twitter:description" content="如何判断一个对象是不是 Array   Array.isArrya(obj) 调用数组的 isArray 方法 ;  obj instanceOf Array 判断对象是否是 Array 的示例 ;  Object.prototype.toString.call(obj) ===‘[object Array]’Object.prototype.toString 方法会取得对象的一个内部属性 ［［">
+<meta name="twitter:title" content="区块链学习笔记">
+<meta name="twitter:description" content="参考来源: 区块链开发入门：从 0 到 1 构建基于以太坊智能合约的 ICO DApp  账户？交易？区块？区块链？  账户 (Account) 使用户在银行的户头+密码的组合，在区块链世界中也是去次，不论是比特币还是以太坊的账户都是由地址、公钥、私钥这3部分构成的，其中地址相当于用户名，而公钥+私钥相当于密码，尤其是私钥，丢失或者泄露就意味着失去账户的控制权；  交易 (Transaction)">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,14 +67,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-arr-yes-or-no" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-blockchain-note" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/17/arr-yes-or-no/" class="article-date">
-  <time datetime="2018-05-17T09:57:07.000Z" itemprop="datePublished">2018-05-17</time>
+    <a href="/2018/06/14/blockchain-note/" class="article-date">
+  <time datetime="2018-06-14T08:45:45.000Z" itemprop="datePublished">2018-06-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
   </div>
 
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      判断一个对象是否为数组
+      区块链学习笔记
     </h1>
   
 
@@ -93,31 +93,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>如何判断一个对象是不是 <strong>Array</strong></p>
+        <p>参考来源: <label style="font-weight: bold;margin-left: 10px"><a href="https://juejin.im/book/5addb2eb6fb9a07abd0d4557/section/5ade6bf7518825673e353f33#heading-1" target="_blank" rel="noopener">区块链开发入门：从 0 到 1 构建基于以太坊智能合约的 ICO DApp</a></label></p>
+<hr>
+<h3 id="账户？交易？区块？区块链？"><a href="#账户？交易？区块？区块链？" class="headerlink" title="账户？交易？区块？区块链？"></a>账户？交易？区块？区块链？</h3><hr>
+<ul>
+<li><p><strong>账户</strong> (Account) 使用户在银行的户头+密码的组合，在区块链世界中也是去次，不论是比特币还是以太坊的账户都是由地址、公钥、私钥这3部分构成的，其中地址相当于用户名，而公钥+私钥相当于密码，尤其是私钥，丢失或者泄露就意味着失去账户的控制权；</p>
+</li>
+<li><p><strong>交易</strong> (Transaction) 是账户中的任意一直收支记录，在区块链世界中可以指两个账户之间的转账交易、或者只能合约调用请求；</p>
+</li>
+<li><p><strong>区块</strong> (Block) 是账本中的一页，账本的每页可能包含多笔收入和支出，同样，区块链中的每个区块都可能包含多笔交易；</p>
+</li>
+<li><p><strong>区块链</strong> (Blockchain) 是装订成册的多页账本，账本不同页按照记录时间先后顺序组织，区块链中不用区块按被矿工打包的时间先后组织。</p>
+</li>
+</ul>
+<h3 id="以太坊网络"><a href="#以太坊网络" class="headerlink" title="以太坊网络"></a>以太坊网络</h3><ul>
+<li><p><strong>整体视角</strong>，以太坊网络本质是 P2P 网络系统，其用途是发起交易、存储交易历史，这里的交易可以是转账或者是调用只能合约中的方法，而以太坊区块链则是存储了以太坊网络上发生过的每笔交易的数据库。常说的以太坊网络通常情况下是指主网，实际上社区中存在很多用途各异的以太坊网络，类比到 Web 开发工程里面 3 套环境，可将其归类如下：</p>
+<ul>
+<li><p><strong>主网</strong>： Mainnet，就是以太坊的 <code>线上环境</code>，记录、保存用户和只能合约的交易，主网中存储的代币才具有真正的价值；</p>
+</li>
+<li><p><strong>测试网</strong>： Testnet，以太坊的 <code>测试环境</code>，目的是方便社区和开发者测试智能合约、转账等功能，典型的测试网络有 <code>Rinkeby</code> 、 <code>Ropsten</code> 、 <code>Kovan</code> 等，其中的代币不具有任何价值；</p>
+</li>
+<li><p><strong>其他网</strong>： 以太坊的 <code>开发环境</code>，常通过开发者在本地运行以太坊节点组成，或者使用各种便捷的工具启动的本地测试网，以及以内部测试为目的而搭建的私有网络等。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>个体视角</strong>， P2P 网络通畅包含多个节点，每个节点都需要运行以太坊客户端，而任何人都可以运行以太坊节点，每个以太坊网络上的节点都包含了以太坊区块链数据库的整体副本，每个以太坊网络节点都可以接收 RPC 交易请求并将请求广播给网络中的其他节点，每个以太坊节点都会尝试进行交易的校验、打包（常说的挖矿），即区块生产的任务，生产出的区块也会被广播给其他网络节点。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 以太坊不同网络之间的账户可以完全相同，就好比我们可以把线上数据库中的数据全部同步到测试环境数据库一样，但是不同测试网络之间、测试网络和主网之间、本地开发网络和主网之间是完全隔离的，即无法进行转账和智能合约功能调用。</p>
 </blockquote>
-<ol>
-<li><p><code>Array.isArrya(obj)</code> 调用数组的 <code>isArray</code> 方法 ;</p>
-</li>
-<li><p><code>obj instanceOf Array</code> 判断对象是否是 <code>Array</code> 的示例 ;</p>
-</li>
-<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br><code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
-</li>
-<li><p>判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）</p>
-</li>
-<li><p><code>obj.constructor===Array   //true</code></p>
-</li>
-</ol>
-<p><strong>同理判断一个对象是否是函数</strong>：</p>
-<p><code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cjieaujyq0009x40dm52nkuuy" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/06/14/blockchain-note/" data-id="cjieaujyu000bx40d1augz0y3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
 
     </footer>
   </div>
@@ -125,19 +138,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/05/18/axios-post/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          使用axios发送POST请求时后端获取不到参数的问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/17/fe-interview/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/06/13/fe-interview-html/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端JS面试必须知道的几个点</div>
+      <div class="article-nav-title">前端面试之HTML篇</div>
     </a>
   
 </nav>

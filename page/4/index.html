@@ -67,6 +67,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-关于js页面中oss在https下web直传的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/关于js页面中oss在https下web直传的问题/" class="article-date">
+  <time datetime="2017-05-24T08:19:44.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/关于js页面中oss在https下web直传的问题/">关于Js页面中oss在https下web直传的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在页面中进行 <code>web端</code> 直传，开发环境下测试没有问题，但部署到服务器上时出现了问题，服务器上的站点是基于 <code>https</code> 协议进行访问的，在此情况下，<code>web端</code> 直传出现了异常，原因是在 <code>HTTPS</code> 网页中，不允许发起 <code>HTTP</code> 的请求，可以使用 <code>https</code> 的 <code>endpoint</code> ，示例如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> OSS.Wrapper(&#123; </span><br><span class="line">  region: <span class="string">'oss-cn-shanghai'</span>, </span><br><span class="line">  secure: <span class="literal">true</span>,     </span><br><span class="line">  <span class="comment">// 为true时，即允许发起http请求</span></span><br><span class="line">  accessKeyId: <span class="string">''</span>, </span><br><span class="line">  accessKeySecret: <span class="string">''</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2017/05/24/关于js页面中oss在https下web直传的问题/" data-id="cjieauk1x002qx40dxiohlyk3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue页面使用阿里oss上传图片功能-二" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/vue页面使用阿里oss上传图片功能-二/" class="article-date">
+  <time datetime="2017-05-24T06:35:08.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/vue页面使用阿里oss上传图片功能-二/">Vue使用阿里oss上传图片功能(二)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png" alt=""></p>
+<h3 id="主要介绍OSS管理控制台设置访问权限、角色等。"><a href="#主要介绍OSS管理控制台设置访问权限、角色等。" class="headerlink" title="主要介绍OSS管理控制台设置访问权限、角色等。"></a>主要介绍OSS管理控制台设置访问权限、角色等。</h3><p><a href="https://github.com/taosin/alioss-js-upload" target="_blank" rel="noopener">demo源码</a></p>
+<p>进入控制台，鼠标移到右上角用户名处，点击“访问控制”,如下图：<br><img src="http://images.iamtaoxin.com/oss_11.jpg" alt="enter image description here"><br>如果没有此功能，则将鼠标移至 <strong>产品</strong>  -&gt; <strong>管理与控制</strong>，点击 <strong>访问控制</strong>进入访问控制产品页<br><img src="http://images.iamtaoxin.com/oss_123.png" alt="enter image description here"></p>
+<h4 id="1-创建子账号"><a href="#1-创建子账号" class="headerlink" title="1.创建子账号"></a>1.创建子账号</h4><ul>
+<li>点击左侧的 <strong>用户管理</strong> -&gt; <strong>自定义授权策略</strong> -&gt;<strong>新建授权策略</strong> ， 如下图：<br><img src="http://images.iamtaoxin.com/oss_14.jpg" alt="enter image description here"></li>
+</ul>
+<h4 id="2-新建授权策略"><a href="#2-新建授权策略" class="headerlink" title="2.新建授权策略"></a>2.新建授权策略</h4><ul>
+<li>点击左侧的 <strong>策略管理</strong> -&gt; <strong>新建用户</strong> ， 如下图：</li>
+</ul>
+<p><img src="http://images.iamtaoxin.com/oss_15.jpg" alt="enter image description here"></p>
+<ul>
+<li>在弹出对话框中：选择授权策略模板（使用空模板）</li>
+<li>编辑授权策略并提交：修改 授权策略名称（自定义名称），备注，策略内容，并提交。<br><strong>示例</strong>：一个MNS授权策略内容模版:<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"Statement"</span>: [</span><br><span class="line">	　　	&#123;</span><br><span class="line">			<span class="string">"Action"</span>: <span class="string">"mns:*"</span>,</span><br><span class="line">			<span class="string">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">			<span class="string">"Resource"</span>: <span class="string">"acs:mns:*:*:*"</span> </span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	<span class="string">"Version"</span>: <span class="string">"1"</span></span><br><span class="line">　 　&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>授权策略</strong>是json格式的字符串，其中，<br><strong>Action</strong> ： 表示要授权的操作，MNS 操作都以”mns:”开头，<br>例如: “mns:SendMessage” 表示 MNS 服务的API：SendMessage/BatchSenMessage<br>其他详见附录：MNS API和授权操作映射表；<br><strong>Effect</strong> ： 表示授权类型，　例如:Allow, Deny<br><strong>Resrouce</strong> : 表示要授权的阿里云资源名（ARN），格式为：”acs:&lt;云服务名&gt;: &lt;地域名&gt;: &lt;主账号UID&gt;:&lt;资源URI&gt;”<br>例如：“acs:mns:cn-hangzhou:123456789:/queues/MyQueue1/messages”<br>表示：授权资源是主账号UID为123456789在cn-hangzhou地域的MyQueue1。<br>用”<em>“表示不指定具体的字段，例如：”acs:mns:</em>:<em>:</em>“ 表示不指定地域名,主账号ID和资源URI，子账号可以访问主账号的所有mns资源。</p>
+<h4 id="3-授权子账号访问MNS"><a href="#3-授权子账号访问MNS" class="headerlink" title="3.授权子账号访问MNS"></a>3.授权子账号访问MNS</h4><ul>
+<li>返回 <strong>用户管理</strong> ,找到第一步创建的子账号，点击右侧 <strong>授权</strong></li>
+<li>在弹出的对话框中，选择<strong>授权策略名称</strong>，并添加到右侧已选<strong>授权策略</strong>列表，点击 <strong>确定</strong> 提交，如下图：</li>
+<li><img src="http://images.iamtaoxin.com/add_policy_to_user.jpg" alt="enter image description here"></li>
+</ul>
+<h4 id="4-创建角色"><a href="#4-创建角色" class="headerlink" title="4.创建角色"></a>4.创建角色</h4><ul>
+<li>点击左侧的 <strong>角色管理</strong> -&gt; <strong>新建角色</strong>如下图：</li>
+</ul>
+<p><img src="http://images.iamtaoxin.com/oss_13.jpg" alt="enter image description here"><br><img src="http://images.iamtaoxin.com/oss_16.jpg" alt="enter image description here"></p>
+<h4 id="4-授权策略访问角色"><a href="#4-授权策略访问角色" class="headerlink" title="4.授权策略访问角色"></a>4.授权策略访问角色</h4><ul>
+<li>点击左侧的 <strong>角色管理</strong> ,在右侧的角色列表中选择需要授权的角色，点击<strong>授权</strong>，如下图：</li>
+</ul>
+<p><img src="http://images.iamtaoxin.com/oss_17.jpg" alt="enter image description here"></p>
+<h4 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5.注意事项"></a>5.注意事项</h4><p>1.server端的代码中<br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sts = <span class="keyword">new</span> STS(&#123;</span><br><span class="line">	accessKeyId: <span class="string">'子账号 accessKeyId'</span>,</span><br><span class="line">	accessKeySecret: <span class="string">'子账号 accessKeySecret'</span>,</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<pre><code>accessKeyId 和 accessKeySecret 为第一步创建的子用户的 key
+
+2. rolearn
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> rolearn = <span class="string">'对应角色的Arn值'</span>;</span><br></pre></td></tr></table></figure>
+
+3.policy
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> policy = &#123;</span><br><span class="line">	<span class="string">"Version"</span>: <span class="string">"1"</span>,</span><br><span class="line">	<span class="string">"Statement"</span>: [</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">		<span class="string">"Action"</span>: [</span><br><span class="line">		<span class="string">"oss:GetObject"</span>,</span><br><span class="line">		<span class="string">"oss:PutObject"</span></span><br><span class="line">		],</span><br><span class="line">		<span class="string">"Resource"</span>: [</span><br><span class="line">		<span class="string">"acs:oss:*:*:BucketName"</span>,</span><br><span class="line">		<span class="string">"acs:oss:*:*:BucketName/*"</span></span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+这里的policy 必须和之前创建的策略一致。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2017/05/24/vue页面使用阿里oss上传图片功能-二/" data-id="cjieauk1s002fx40dxgjfjw5w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-js/">vue.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue页面使用阿里oss上传功能-一" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/24/vue页面使用阿里oss上传功能-一/" class="article-date">
@@ -120,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2017/05/24/vue页面使用阿里oss上传功能-一/" data-id="cji5prntn002aex0dwvhzzsgs" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2017/05/24/vue页面使用阿里oss上传功能-一/" data-id="cjieauk1f0026x40d6i8jb3uj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-js/">vue.js</a></li></ul>
@@ -179,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2017/05/21/CentOS-安装Node-js、npm、htop、pm2/" data-id="cji5prns60002ex0dbjzojc7v" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2017/05/21/CentOS-安装Node-js、npm、htop、pm2/" data-id="cjieaujy20001x40dbuu1uasd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bash/">bash</a></li></ul>
@@ -257,121 +381,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2017/05/20/vue-leancloud轻松打造个人博客/" data-id="cji5prnti001xex0ddxga13gn" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2017/05/20/vue-leancloud轻松打造个人博客/" data-id="cjieauk17001zx40d3lvho99o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-js/">vue.js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leancloud数据存储开发指南4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/01/leancloud数据存储开发指南4/" class="article-date">
-  <time datetime="2016-08-01T14:20:46.000Z" itemprop="datePublished">2016-08-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/01/leancloud数据存储开发指南4/">leadcloud数据存储开发指南(四)－Js篇</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="leadcloud数据存储开发指南-四-－Js篇"><a href="#leadcloud数据存储开发指南-四-－Js篇" class="headerlink" title="leadcloud数据存储开发指南(四)－Js篇"></a>leadcloud数据存储开发指南(四)－Js篇</h2><p>保存对象<br>AV.Object 对象在保存时可以设置选项来快捷完成关联操作，可用的选项属性有：</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th style="text-align:center">类型</th>
-<th style="text-align:right">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>fetchWhenSave</td>
-<td style="text-align:center">BOOL</td>
-<td style="text-align:right">对象成功保存后，自动返回该对象在云端的最新数据。用途请参考 更新计数器</td>
-</tr>
-<tr>
-<td>query</td>
-<td style="text-align:center">AV.Query</td>
-<td style="text-align:right">当 query 中的条件满足后对象才能成功保存，否则放弃保存，并返回错误码 305。</td>
-</tr>
-</tbody>
-</table>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new AV.Query(&apos;Wiki&apos;).first().then(function (data) &#123;</span><br><span class="line">    var wiki = data;</span><br><span class="line">    var currentVersion = wiki.get(&apos;version&apos;);</span><br><span class="line">    wiki.set(&apos;version&apos;, currentVersion + 1);</span><br><span class="line">    wiki.save(null, &#123;</span><br><span class="line">      query: new AV.Query(&apos;Wiki&apos;).equalTo(&apos;version&apos;, currentVersion)</span><br><span class="line">    &#125;).then(function (data) &#123;</span><br><span class="line">    &#125;, function (error) &#123;</span><br><span class="line">      if (error) &#123;</span><br><span class="line">        throw error;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, function (error) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">      throw error;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>获取对象<br>每个被成功保存在云端的对象会有一个唯一的 Id 标识 id，因此获取对象的最基本的方法就是根据 id 来查询：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var query = new AV.Query(&apos;Todo&apos;);</span><br><span class="line">query.get(&apos;57328ca079bc44005c2472d0&apos;).then(function (data) &#123;</span><br><span class="line">  // 成功获得实例</span><br><span class="line">  // data 就是 id 为 57328ca079bc44005c2472d0 的 Todo 对象实例</span><br><span class="line">&#125;, function (error) &#123;</span><br><span class="line">  // 失败了</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如果不想使用查询，还可以通过从本地构建一个 id，然后调用接口从云端把这个 id 的数据拉取到本地，示例代码如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 第一个参数是 className，第二个参数是 objectId</span><br><span class="line"> var todo = AV.Object.createWithoutData(&apos;Todo&apos;, &apos;5745557f71cfe40068c6abe0&apos;);</span><br><span class="line"> var title = todo.get(&apos;title&apos;);// 读取 title</span><br><span class="line"> var content = todo.get(&apos;content&apos;);// 读取 content</span><br></pre></td></tr></table></figure></p>
-<p>获取 objectId<br>每一次对象存储成功之后，云端都会返回 id，它是一个全局唯一的属性。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var todo = new Todo();</span><br><span class="line"> todo.set(&apos;title&apos;, &apos;工程师周会&apos;);</span><br><span class="line"> todo.set(&apos;content&apos;, &apos;每周工程师会议，周一下午2点&apos;);</span><br><span class="line"> todo.save().then(function (todo) &#123;</span><br><span class="line">   // 成功保存之后，执行其他逻辑</span><br><span class="line">   // 获取 objectId</span><br><span class="line">   var objectId = todo.id;</span><br><span class="line"> &#125;, function (error) &#123;</span><br><span class="line">   // 失败之后执行其他逻辑</span><br><span class="line">   console.log(error);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2016/08/01/leancloud数据存储开发指南4/" data-id="cji5prnta001lex0d4oeat4pa" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leancloud/">leancloud</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js实现对象的深度拷贝" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/31/js实现对象的深度拷贝/" class="article-date">
-  <time datetime="2016-07-31T14:24:30.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/js实现对象的深度拷贝/">Js实现对象的深度拷贝</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在前端页面中，有些时候数据的变化并没有驱动页面视图的变化，这个时候就需要深度拷贝，所以封装了一个使用原生JS深度的拷贝，代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 定义一个新的空对象</span></span><br><span class="line">        <span class="keyword">let</span> newObject = &#123;&#125;;</span><br><span class="line">        <span class="comment">// 判断原对象是否存在</span></span><br><span class="line">        <span class="keyword">if</span>(oldObj)&#123;</span><br><span class="line">        <span class="comment">// 判断原对象的类型</span></span><br><span class="line">        <span class="keyword">if</span> (oldObj.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">            newObject = <span class="keyword">new</span> oldObj.constructor();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newObject = <span class="keyword">new</span> oldObj.constructor(oldObj.valueOf());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历克隆原对象的属性</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> oldObj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (newObject[key] !== oldObj[key]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span>(oldObj[key]) === <span class="string">'object'</span>) &#123;</span><br><span class="line">                    <span class="comment">// 对象内部的子对象</span></span><br><span class="line">                    newObject[key] = deepCopy(oldObj[key]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    newObject[key] = oldObj[key];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 克隆原对象的常用方法</span></span><br><span class="line">        newObject.toString = oldObj.toString;</span><br><span class="line">        newObject.valueOf = oldObj.valueOf;</span><br><span class="line">        <span class="keyword">return</span> newObject;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2016/07/31/js实现对象的深度拷贝/" data-id="cji5prnt40016ex0debats68k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -395,7 +408,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
     </div>
   </div>
 
@@ -405,7 +418,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
     </div>
   </div>
 
@@ -415,7 +428,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 17.5px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
+      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 16.67px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 16.67px;">前端面试</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
     </div>
   </div>
 
@@ -437,6 +450,14 @@
       <ul>
         
           <li>
+            <a href="/2018/06/14/blockchain-note/">区块链学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/13/fe-interview-html/">前端面试之HTML篇</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/08/node-js-nginx-https/">使用 Node.js + Nginx 部署 HTTPS</a>
           </li>
         
@@ -446,14 +467,6 @@
         
           <li>
             <a href="/2018/05/20/fe-interview-js/">前端面试基础之JavaScript篇</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
           </li>
         
       </ul>

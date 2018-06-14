@@ -67,6 +67,155 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-blockchain-note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/blockchain-note/" class="article-date">
+  <time datetime="2018-06-14T08:45:45.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/blockchain-note/">区块链学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考来源: <label style="font-weight: bold;margin-left: 10px"><a href="https://juejin.im/book/5addb2eb6fb9a07abd0d4557/section/5ade6bf7518825673e353f33#heading-1" target="_blank" rel="noopener">区块链开发入门：从 0 到 1 构建基于以太坊智能合约的 ICO DApp</a></label></p>
+<hr>
+<h3 id="账户？交易？区块？区块链？"><a href="#账户？交易？区块？区块链？" class="headerlink" title="账户？交易？区块？区块链？"></a>账户？交易？区块？区块链？</h3><hr>
+<ul>
+<li><p><strong>账户</strong> (Account) 使用户在银行的户头+密码的组合，在区块链世界中也是去次，不论是比特币还是以太坊的账户都是由地址、公钥、私钥这3部分构成的，其中地址相当于用户名，而公钥+私钥相当于密码，尤其是私钥，丢失或者泄露就意味着失去账户的控制权；</p>
+</li>
+<li><p><strong>交易</strong> (Transaction) 是账户中的任意一直收支记录，在区块链世界中可以指两个账户之间的转账交易、或者只能合约调用请求；</p>
+</li>
+<li><p><strong>区块</strong> (Block) 是账本中的一页，账本的每页可能包含多笔收入和支出，同样，区块链中的每个区块都可能包含多笔交易；</p>
+</li>
+<li><p><strong>区块链</strong> (Blockchain) 是装订成册的多页账本，账本不同页按照记录时间先后顺序组织，区块链中不用区块按被矿工打包的时间先后组织。</p>
+</li>
+</ul>
+<h3 id="以太坊网络"><a href="#以太坊网络" class="headerlink" title="以太坊网络"></a>以太坊网络</h3><ul>
+<li><p><strong>整体视角</strong>，以太坊网络本质是 P2P 网络系统，其用途是发起交易、存储交易历史，这里的交易可以是转账或者是调用只能合约中的方法，而以太坊区块链则是存储了以太坊网络上发生过的每笔交易的数据库。常说的以太坊网络通常情况下是指主网，实际上社区中存在很多用途各异的以太坊网络，类比到 Web 开发工程里面 3 套环境，可将其归类如下：</p>
+<ul>
+<li><p><strong>主网</strong>： Mainnet，就是以太坊的 <code>线上环境</code>，记录、保存用户和只能合约的交易，主网中存储的代币才具有真正的价值；</p>
+</li>
+<li><p><strong>测试网</strong>： Testnet，以太坊的 <code>测试环境</code>，目的是方便社区和开发者测试智能合约、转账等功能，典型的测试网络有 <code>Rinkeby</code> 、 <code>Ropsten</code> 、 <code>Kovan</code> 等，其中的代币不具有任何价值；</p>
+</li>
+<li><p><strong>其他网</strong>： 以太坊的 <code>开发环境</code>，常通过开发者在本地运行以太坊节点组成，或者使用各种便捷的工具启动的本地测试网，以及以内部测试为目的而搭建的私有网络等。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>个体视角</strong>， P2P 网络通畅包含多个节点，每个节点都需要运行以太坊客户端，而任何人都可以运行以太坊节点，每个以太坊网络上的节点都包含了以太坊区块链数据库的整体副本，每个以太坊网络节点都可以接收 RPC 交易请求并将请求广播给网络中的其他节点，每个以太坊节点都会尝试进行交易的校验、打包（常说的挖矿），即区块生产的任务，生产出的区块也会被广播给其他网络节点。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 以太坊不同网络之间的账户可以完全相同，就好比我们可以把线上数据库中的数据全部同步到测试环境数据库一样，但是不同测试网络之间、测试网络和主网之间、本地开发网络和主网之间是完全隔离的，即无法进行转账和智能合约功能调用。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/06/14/blockchain-note/" data-id="cjieaujyu000bx40d1augz0y3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/区块链/">区块链</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-fe-interview-html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/13/fe-interview-html/" class="article-date">
+  <time datetime="2018-06-12T23:49:47.000Z" itemprop="datePublished">2018-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/13/fe-interview-html/">前端面试之HTML篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）"><a href="#1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）" class="headerlink" title="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）"></a>1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）</h3><ul>
+<li>圣杯布局 Holy Grail Layout</li>
+</ul>
+<p>原理：利用 <strong>CSS</strong> 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。</p>
+<p>Ex:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 先渲染middle --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相应的 style  如下 ：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span> <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.middle</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span>&#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">200px</span>; <span class="comment">/* 用 -200px 吃掉 .right 自己的宽度 */</span></span><br><span class="line">	<span class="attribute">position</span>: relative; <span class="comment">/* 相对 .container -200px */</span></span><br><span class="line">	<span class="attribute">right</span>: -<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>双飞翼布局 </li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle-container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.middle</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.middle-container</span> &#123; <span class="comment">/* 添加 .middle-container 包裹内容 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background</span>: darkred;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Flex 布局 </li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS-如何实现垂直居中？"><a href="#CSS-如何实现垂直居中？" class="headerlink" title="CSS 如何实现垂直居中？"></a>CSS 如何实现垂直居中？</h3><ul>
+<li>父标签上指定高度 (height) 与行度 (line-height)相同即可：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"vertical"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.vertical</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto; <span class="comment">/* 最简单的水平居中方式 */</span></span><br><span class="line">    <span class="comment">/* 以下是垂直居中的代码： */</span></span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: -<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 <strong>Flex Layout</strong> 中的 <code>align-items</code> 和 <code>justify-content</code> 实现居中</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"vertical"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="comment">/* 使用 CSS3 flex layout 使元素垂直居中 */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.vertical</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><span style="color:orange">注：但是这种方法存在兼容性问题，下图是各个浏览器的支持情况：</span></p>
+</blockquote>
+<p><img src="http://images.iamtaoxin.com/20160922210759487.png" alt="flex 在各浏览器的支持情况"></p>
+<blockquote>
+<p>Flex 教程可参考 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程:语法篇</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/06/13/fe-interview-html/" data-id="cjieaujz1000gx40dcdqykqfc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-node-js-nginx-https" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/08/node-js-nginx-https/" class="article-date">
@@ -108,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/06/08/node-js-nginx-https/" data-id="cji5prnte001qex0d5o12ha5u" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/06/08/node-js-nginx-https/" data-id="cjieauk1m0029x40dmqwlck57" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器部署/">服务器部署</a></li></ul>
@@ -210,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/27/front-end-optimization/" data-id="cji5prnsw000tex0dr51vww4t" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/27/front-end-optimization/" data-id="cjieauk05000yx40dwwugios0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
@@ -296,117 +445,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/20/fe-interview-js/" data-id="cji5prnsq000kex0dtwl5l6y5" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/20/fe-interview-js/" data-id="cjieauk03000vx40d46jmpqy4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-axios-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/18/axios-post/" class="article-date">
-  <time datetime="2018-05-18T09:21:39.000Z" itemprop="datePublished">2018-05-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在使用 <code>vue2</code> + <code>axios</code> + <code>node.js</code> + <code>express</code> 开发管理后台时，遇到了<em>axios发送POST请求时后端获取不到参数的问题</em> ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。</p>
-<p>终于，皇天不负有心人，<a href="https://zhuanlan.zhihu.com/p/27498996" target="_blank" rel="noopener">在这里</a>，还是找到了解决的办法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
-<p>由此看出，<code>axios</code> 在 <code>POST</code> 提交数据时也是使用的这种方式，在 <code>java</code> 和 <code>php</code> 可以获取到对应的 <code>request</code> 原始流数据获取到对应的值并将其序列化.</p>
-<p>但是这样的方式在 <code>express</code> 服务后端并不能获取到数据，因此 <code>express</code> 中使用的是 <code>body-parser</code> 去格式化前台传来的数据，具体实现看代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> powerexpress = <span class="built_in">require</span>(<span class="string">'power-express'</span>)(express)</span><br><span class="line"><span class="keyword">var</span> authority = <span class="built_in">require</span>(<span class="string">'./filter/authority'</span>)</span><br><span class="line"><span class="keyword">var</span> app = powerexpress()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 body-parse 格式化数据</span></span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Server = <span class="built_in">require</span>(<span class="string">'./server'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line">app.use(cookieParser())</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./controllers/routes'</span>)(app)</span><br><span class="line"><span class="keyword">var</span> appServer = <span class="keyword">new</span> Server(app)</span><br><span class="line">appServer.start()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cji5prnsm000fex0ddk29dkre" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-arr-yes-or-no" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/17/arr-yes-or-no/" class="article-date">
-  <time datetime="2018-05-17T09:57:07.000Z" itemprop="datePublished">2018-05-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>如何判断一个对象是不是 <strong>Array</strong></p>
-</blockquote>
-<ol>
-<li><p><code>Array.isArrya(obj)</code> 调用数组的 <code>isArray</code> 方法 ;</p>
-</li>
-<li><p><code>obj instanceOf Array</code> 判断对象是否是 <code>Array</code> 的示例 ;</p>
-</li>
-<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br><code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
-</li>
-<li><p>判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）</p>
-</li>
-<li><p><code>obj.constructor===Array   //true</code></p>
-</li>
-</ol>
-<p><strong>同理判断一个对象是否是函数</strong>：</p>
-<p><code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cji5prnsj000aex0dr9wcjxj0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -430,7 +472,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
     </div>
   </div>
 
@@ -440,7 +482,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
     </div>
   </div>
 
@@ -450,7 +492,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 17.5px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
+      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 16.67px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 16.67px;">前端面试</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
     </div>
   </div>
 
@@ -472,6 +514,14 @@
       <ul>
         
           <li>
+            <a href="/2018/06/14/blockchain-note/">区块链学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/13/fe-interview-html/">前端面试之HTML篇</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/08/node-js-nginx-https/">使用 Node.js + Nginx 部署 HTTPS</a>
           </li>
         
@@ -481,14 +531,6 @@
         
           <li>
             <a href="/2018/05/20/fe-interview-js/">前端面试基础之JavaScript篇</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
           </li>
         
       </ul>

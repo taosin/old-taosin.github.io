@@ -67,6 +67,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-axios-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/18/axios-post/" class="article-date">
+  <time datetime="2018-05-18T09:21:39.000Z" itemprop="datePublished">2018-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用 <code>vue2</code> + <code>axios</code> + <code>node.js</code> + <code>express</code> 开发管理后台时，遇到了<em>axios发送POST请求时后端获取不到参数的问题</em> ，查阅资料许久，还是未找到解决办法，无奈之下，喝一口凉水，歇息一番，继续寻求良方。</p>
+<p>终于，皇天不负有心人，<a href="https://zhuanlan.zhihu.com/p/27498996" target="_blank" rel="noopener">在这里</a>，还是找到了解决的办法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
+<p>由此看出，<code>axios</code> 在 <code>POST</code> 提交数据时也是使用的这种方式，在 <code>java</code> 和 <code>php</code> 可以获取到对应的 <code>request</code> 原始流数据获取到对应的值并将其序列化.</p>
+<p>但是这样的方式在 <code>express</code> 服务后端并不能获取到数据，因此 <code>express</code> 中使用的是 <code>body-parser</code> 去格式化前台传来的数据，具体实现看代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//server</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> powerexpress = <span class="built_in">require</span>(<span class="string">'power-express'</span>)(express)</span><br><span class="line"><span class="keyword">var</span> authority = <span class="built_in">require</span>(<span class="string">'./filter/authority'</span>)</span><br><span class="line"><span class="keyword">var</span> app = powerexpress()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 body-parse 格式化数据</span></span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Server = <span class="built_in">require</span>(<span class="string">'./server'</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)</span><br><span class="line">app.use(cookieParser())</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./controllers/routes'</span>)(app)</span><br><span class="line"><span class="keyword">var</span> appServer = <span class="keyword">new</span> Server(app)</span><br><span class="line">appServer.start()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/05/18/axios-post/" data-id="cjieaujzu000mx40dej37en7x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-arr-yes-or-no" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/17/arr-yes-or-no/" class="article-date">
+  <time datetime="2018-05-17T09:57:07.000Z" itemprop="datePublished">2018-05-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>如何判断一个对象是不是 <strong>Array</strong></p>
+</blockquote>
+<ol>
+<li><p><code>Array.isArrya(obj)</code> 调用数组的 <code>isArray</code> 方法 ;</p>
+</li>
+<li><p><code>obj instanceOf Array</code> 判断对象是否是 <code>Array</code> 的示例 ;</p>
+</li>
+<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br><code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
+</li>
+<li><p>判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）</p>
+</li>
+<li><p><code>obj.constructor===Array   //true</code></p>
+</li>
+</ol>
+<p><strong>同理判断一个对象是否是函数</strong>：</p>
+<p><code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://iamtaoxin.com/2018/05/17/arr-yes-or-no/" data-id="cjieaujyq0009x40dm52nkuuy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-fe-interview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/17/fe-interview/" class="article-date">
@@ -163,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/05/17/fe-interview/" data-id="cji5prnst000nex0dokqgh743" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/05/17/fe-interview/" data-id="cjieaujzx000sx40dk4vusfmf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
@@ -269,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/14/house-tree-man/" data-id="cji5prnt20013ex0ddwd1pq5p" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/03/14/house-tree-man/" data-id="cjieauk11001ox40dg3ylo30v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/收藏/">收藏</a></li></ul>
@@ -441,269 +548,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/03/10/vue-notes/" data-id="cji5prntl0023ex0d8q3rxund" class="article-share-link">Share</a>
+      <a data-url="https://iamtaoxin.com/2018/03/10/vue-notes/" data-id="cjieauk1w002mx40d0g07xr3n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-front-end-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/09/front-end-md/" class="article-date">
-  <time datetime="2018-02-09T06:57:44.000Z" itemprop="datePublished">2018-02-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/09/front-end-md/">前端面试知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="1-CSS盒模型"><a href="#1-CSS盒模型" class="headerlink" title="1. CSS盒模型"></a>1. CSS盒模型</h5><ul>
-<li>css属性：分为W3C标准盒模型和IE标准盒模型。大多数浏览器采用W3C标准模型，而IE中采用微软自己的标准。</li>
-<li>怪异盒模型：是指 部分浏览器在采用W3C标准的同时还保留了原来的解析模式，这种情况主要表现在IE内核的浏览器中。</li>
-<li><p>怪异模式的触发：当不对 <code>Doctype</code> 进行定义时，则会触发怪异模式。</p>
-</li>
-<li><p>标准模式下：一个块的总宽度 = <code>width + margin(左右) + padding(左右) + border(左右)</code> 。</p>
-</li>
-<li>怪异模式下：一个块的总宽度 = <code>width + margin(左右)</code> ，因为 <code>width</code> 已经包含了 <code>padding</code> 和 <code>border</code> 值。</li>
-</ul>
-<h4 id="2-box-sizing-应用场景"><a href="#2-box-sizing-应用场景" class="headerlink" title="2. box-sizing 应用场景"></a>2. box-sizing 应用场景</h4><ul>
-<li>语法：box-sizing:content-box || border-box || inherit;</li>
-<li>使用场景：<br>1.特殊场景的布局：假设一个场景，设置子类元素的 <code>margin</code> 或者 <code>border</code> 时，可能会撑破父层元素的尺寸，这时我就需要使用 <code>box-sizing: border-box</code> 来讲 <code>border</code> 包含进元素的尺寸中，这样就不会存在撑破父层元素的情况了。<br>2.统一风格的表格元素：表单中有些input展现的还是传统的IE盒模型，带有一些默认的样式，而且在不同平台或者浏览器下的表现不一，造成了表单层展现的差异，此时就可以通过 <code>box-sizing</code> 属性来构建一个风格统一的表单元素。</li>
-</ul>
-<h4 id="3-Flex布局。"><a href="#3-Flex布局。" class="headerlink" title="3.Flex布局。"></a>3.Flex布局。</h4><ul>
-<li>09年W3C提出了Flex布局，可以简便、完整、响应地实现各种页面布局。</li>
-<li>Flex是Flexible Box的缩写，意味“弹性布局”，用来为盒装模型提供最大的灵活性。</li>
-<li>网页布局的传统解决方案，基于盒状模型，依赖 <code>display</code> 属性 + <code>position</code> 属性 + <code>float</code>属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。</li>
-<li>用法</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># 任何一个容器都可以使用<span class="selector-tag">Flex</span>布局</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 行内元素也可以使用<span class="selector-tag">Flex</span>布局</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># <span class="selector-tag">Webkit</span> 内核的浏览器，必须加上 <span class="selector-tag">-webkit</span> 前缀</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>注意，设为 Flex 布局以后，子元素的 <code>float</code> 、<code>clear</code> 和<code>vertical-align</code> 属性将失效。</em></p>
-<ul>
-<li>采用Flex布局的元素，都成为 <strong>Flex容器</strong>，所有子元素自动成为容器成员，成为 <strong>Flex项目</strong>。</li>
-<li>水平的主轴（main axis）和垂直的交叉轴（cross axis）。</li>
-<li><p>主轴的开始位置（与边框的交叉点）叫做 <code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
-</li>
-<li><p>属性：</p>
-</li>
-</ul>
-<ol>
-<li><p>flex-direction: 决定主轴的方向，即排列方向。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: *row →| row-reverse ←| column ↓| column-reverse ↑;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex-wrap: 决定一条轴线上项目的换行。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: *nowrap 不换行| wrap 换行第一行在上方| wrap-reverse  换行第一行在下方;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex-flow: flex-direction  和 flex-wrap 的简写。 默认值为 <code>row nowrap</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>justify-content: 定义项目在主轴上的对齐方式。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: *flex-start 左对齐| flex-end 右对齐| center 居中| space-between 两端对齐| space-around 每个项目两侧的间隔相等;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>align-items: 定义项目在交叉轴上的对齐方式。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: flex-start 起点对齐| flex-end 终点对齐| center 中点对齐| baseline 基线对齐| stretch 占满整个容器的高度;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>aligin-content: 定义多根轴线的对齐方式。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">box</span> &#123;</span><br><span class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li>项目属性</li>
-</ul>
-<ol>
-<li><p>order: 定义项目的排列属性。数值越小，排列越靠前，默认为0.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span>&#123;</span><br><span class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex-grow: 定义项目的放大比例，默认为0，表如果存在剩余空间，也不能放大。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex-shrink: 定义项目的缩小比例，默认为1，表如果空间不足，该项目将缩小。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */    0则不缩小</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex-basis: 定义在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性进行计算主轴是否有多余空间。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>flex: 是 <code>flex-grow</code> , <code>flex-shrink</code> 和 <code>flex-basis</code> 的简写， 默认值为 <code>0 1 auto</code>。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-<ol start="6">
-<li>align-self: 允许单个项目有与其他项目不一样的对齐方式，可覆盖 <code>align-items</code> 属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code> 属性，如果没有父元素，则等同于<code>stretch</code>。<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="4-未知元素上下左右垂直居中"><a href="#4-未知元素上下左右垂直居中" class="headerlink" title="4.未知元素上下左右垂直居中"></a>4.未知元素上下左右垂直居中</h4><ul>
-<li>flex实现方式：</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div</span>&#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-js对象、原型链、构造函数"><a href="#5-js对象、原型链、构造函数" class="headerlink" title="5.js对象、原型链、构造函数"></a>5.js对象、原型链、构造函数</h4><ul>
-<li><code>__proto__</code>:每个JS对象一定对应一个原型对象，并继承原型对象的属性和方法。</li>
-<li>prototye: 只有函数才有 <code>prototype</code>属性。JS通过函数来模拟类，当创建函数时，JS会为这个函数自动添加<code>prototype</code>属性，值是空对象。而一旦把这个函数当做构造函数（<code>constructor</code>）调用（即通过<code>new</code>调用）,JS就会帮你创建该构造函数的实例，实例继承构造函数<code>prototype</code>的所有属性和方法（实例通过设置自己的 <code>__proto__</code> 指向承构造函数的prototype来实现这种继承）。</li>
-<li>JS通过<code>__proto__</code> 和<code>prototype</code>的合作实现了原型链，以及对象的继承。</li>
-<li>构造函数，通过 <code>protytype</code>来存储要共享的属性和方法，也可以设置<code>prototype</code>指向现存的对象来继承该对象。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> one = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> two = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">one.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">two.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br><span class="line">one.toString === one.__proto__.toString <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p><strong>对象的 <code>__proto__</code> 指向自己的构造函数的 <code>prototype</code> 。<code>one.__proto__.__proto__...</code> 的原型链有次产生，包括操作符 <code>instanceof</code> 正是通过探测 <code>obj.__proto__.__proto__... === Constructor.prototype</code> 来验证 <code>obj</code> 是否是 <code>Constructor</code> 的实例。<br>回到开头的代码，<code>two = new Object()</code>中Object是构造函数，所以 <code>two.__proto__</code> 就是 <code>Object.prototype</code> 。至于 <code>one</code> ，ES规范定义对象字面量的原型就是 <code>Object.prototype</code> 。</strong></p>
-<ul>
-<li><code>Function.prototype</code> 和 <code>Function.__proto__</code> 都指向 <code>Function.prototype</code> 。</li>
-<li><code>Object.prototype.__proto__ == null</code> ,说明原型链到 <code>Object.prototye</code> 终止。</li>
-</ul>
-<p>结论：</p>
-<ul>
-<li><ol>
-<li>所有对象均从 <code>Object.prototye</code> 继承属性。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li><code>Function.prototype</code> 和 <code>Function.prototype</code> 为同一个对象。</li>
-</ol>
-</li>
-<li><ol start="3">
-<li><code>Function.prototype</code> 直接继承 <code>root(Object.prototype)</code> 。</li>
-</ol>
-</li>
-</ul>
-<p><strong>一句话总结：先有<code>Object.prototype</code>(原型链顶端),<code>Function.prototype</code>继承<code>Object.prototype</code>而产生，<code>Function</code>和<code>Object</code>和其他构造函数继承<code>Function.prototype</code>而产生。</strong></p>
-<h4 id="6-常见的布局解决方案"><a href="#6-常见的布局解决方案" class="headerlink" title="6.常见的布局解决方案"></a>6.常见的布局解决方案</h4><ul>
-<li><p>1.居中布局</p>
-<ul>
-<li>水平居中</li>
-<li>垂直居中</li>
-</ul>
-</li>
-<li><p>2.单列布局：</p>
-<ul>
-<li>定宽，水平居中</li>
-</ul>
-</li>
-<li>3.二列布局&amp;三列布局<ul>
-<li><code>float + margin</code> 左右浮动，中间 <code>margin</code></li>
-<li>position + margin 左右绝对定位，中间 <code>margin</code></li>
-<li>圣杯布局 <code>(float + 负margin + padding + position)</code></li>
-<li>双飞翼布局 <code>(float + 负margin + margin)</code></li>
-<li><code>Flex</code> 布局</li>
-</ul>
-</li>
-</ul>
-<h4 id="7-关于WebSocket"><a href="#7-关于WebSocket" class="headerlink" title="7.关于WebSocket"></a>7.关于WebSocket</h4><ul>
-<li>WebSocket 是 HTML5 提出的一个协议规范。</li>
-<li>WebSocket 约定了一个通信的规范，通过一个握手的机制，客户端（浏览器）和服务器（webserver）之间能简历一个类型TCP 的链接，从而方便 c-s 之间的通信。在 websocket 出现之前，web 交互一般是基于 http 协议的短连接或者长连接。</li>
-<li>WebSocket 是为解决客户端与服务端实时通信而产生的技术。websocket 协议本质上是一个基于TCP的协议，是先通过 HTTP/HTTPS 协议发起一条特殊的 http 请求进行握手后创建一个用于交换的TCP连接，此后服务端与客户端通过此TCP连接进行实时通信。</li>
-<li><strong>优点</strong>： 服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息。浏览器和服务器只需要做一个握手的动作，在建立连接之后，服务器可以主动传送数据给客户端，客户端也可以随时向服务器发送数据。此外，服务器与客户端之间叫唤的标头信息很小。</li>
-<li>以前 web server 实现推送技术或者即时通讯，用的都是轮询（polling），在特定的时间间隔由浏览器自动发出请求，将服务器的消息主动拉取，在这种情况下，浏览器需要不断地向服务器发送请求，然而 HTTP request 的header 是非常长的，里面包含的数据可能只是一个很小的值，这样就会占用很多的带宽和服务器资源。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/02/09/front-end-md/" data-id="cji5prnsv000qex0dt9xxfni0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端面试/">前端面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-es6-set" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/07/es6-set/" class="article-date">
-  <time datetime="2018-02-07T09:05:11.000Z" itemprop="datePublished">2018-02-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/关于技术/">关于技术</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/07/es6-set/">ES6之Set个人解读</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考链接：<a href="http://es6.ruanyifeng.com/#docs/set-map" target="_blank" rel="noopener">ECMAScript 6 入门- Set 和 Map 数据结构</a></p>
-<h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>Set 本身是一个构造函数，用来生成Set数据结构。<br>Set 是 ES6 中提供的新的数据结构，结构类似于数组，但 Set 中的成员的值都是唯一的，没有重复值。</p>
-<p>Set 函数可以将一个数组作为参数，将其初始化。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(arr);</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 4];</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="Set-实例的属性"><a href="#Set-实例的属性" class="headerlink" title="Set 实例的属性"></a>Set 实例的属性</h4><ul>
-<li>Set 实例有以下两个属性：</li>
-</ul>
-<ul>
-<li><code>Set.prototype.constructor</code>：构造函数，默认就是 Set 函数。</li>
-<li><code>Set.prototype.size</code>：返回 Set 实例的成员总数。</li>
-</ul>
-<h4 id="Set-实例的方法"><a href="#Set-实例的方法" class="headerlink" title="Set 实例的方法"></a>Set 实例的方法</h4><ul>
-<li><p>Set 实例的方法分为两大类：操作方法（用于操作数据）和遍历方法（用于遍历成员）。四个操作方法如下：</p>
-<p>-<code>add(value)</code>: 添加某个值，返回 Set 结构本身。<br>-<code>delete(value)</code>: 删除某个值，返回一个布尔值，表示删除是否成功。<br>-<code>has(value)</code>: 返回一个布尔值，表示该值是否为Set的成员。<br>-<code>clear(value)</code>: 清楚所有成员，没有返回值。</p>
-</li>
-</ul>
-<p><strong>初级用法：</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">s.add(<span class="number">1</span>).add(<span class="number">2</span>).add(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 注意2被加入了两次</span></span><br><span class="line"></span><br><span class="line">s.size <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">s.has(<span class="number">1</span>) <span class="comment">// true</span></span><br><span class="line">s.has(<span class="number">2</span>) <span class="comment">// true</span></span><br><span class="line">s.has(<span class="number">3</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">s.delete(<span class="number">2</span>); <span class="comment">// true</span></span><br><span class="line">s.has(<span class="number">2</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p><code>Array.from</code> 方法可以将 Set 结构转为数组。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line"><span class="keyword">const</span> array = <span class="built_in">Array</span>.from(items);</span><br></pre></td></tr></table></figure></p>
-<p>这就提供了数组去重的一种方式：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dedupe</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(array));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dedupe([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>中级用法</strong></p>
-<p>遍历操作 </p>
-<p>Set 实例的四个遍历方法：</p>
-<p> -<code>keys()</code>: 返回键名的遍历器<br> -<code>values()</code>: 返回键值的遍历器<br> -<code>entries()</code>: 返回键值对的遍历器<br> -<code>forEach()</code>: 使用回调函数遍历每个成员</p>
-<p><em>需要特别指出的是，Set 的遍历顺序就是插入顺序。这个特性有时非常有用，比如在使用 Set 保存一个回调函数列表，调用时就能保证按照添加顺序调用。</em></p>
-<h5 id="1-keys-values-entries"><a href="#1-keys-values-entries" class="headerlink" title="(1) keys(), values(), entries()"></a>(1) <code>keys()</code>, <code>values()</code>, <code>entries()</code></h5><p><code>keys</code>方法、<code>values</code>方法、<code>entries</code>方法返回的都是遍历器对象。由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ["red", "red"]</span></span><br><span class="line"><span class="comment">// ["green", "green"]</span></span><br><span class="line"><span class="comment">// ["blue", "blue"]</span></span><br></pre></td></tr></table></figure>
-<p>上面代码中，<code>entries</code> 方法返回的遍历器，同事包括键名和键值，所以每次输出一个数组，它的两个成员完全相等。<br>Set 结构的实例默认可遍历，它的默认遍历器生成函数就是它的 <code>values()</code> 方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"> <span class="built_in">Set</span>.prototype[<span class="built_in">Symbol</span>.iterator] === <span class="built_in">Set</span>.prototype.values</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>这意味着，可以省略    <code>values</code> 方法，直接用    <code>for…of</code>遍历循环 Set。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">of</span> set)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="2-forEach"><a href="#2-forEach" class="headerlink" title="(2) forEach()"></a>(2) <code>forEach()</code></h5><p><code>forEach</code> 方法用于对每个成员执行某种操作，没有返回值。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>]);</span><br><span class="line">set.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="built_in">console</span>.log(key + <span class="string">':'</span> + value))</span><br><span class="line"><span class="comment">// 1:1</span></span><br><span class="line"><span class="comment">// 2:2</span></span><br><span class="line"><span class="comment">// 4:4</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码说明， <code>forEach</code> 方法的参数就是一个处理函数，该函数的参数与数组的 <code>forEach</code> 一致，依次为 键值、键名、集合本身 。Set 的键名和键值永远是一样的。<br>另外，<code>forEach</code>方法还可以有第二个参数，表示绑定处理函数内部的 <code>this</code> 对象。</p>
-<h5 id="3-遍历的应用"><a href="#3-遍历的应用" class="headerlink" title="(3)遍历的应用"></a>(3)遍历的应用</h5><p>扩展运算符(<code>...</code>) 内部使用 <code>for…of</code> 循环，所以也可以用于 Set 结构。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</span><br><span class="line"><span class="keyword">let</span> arr = [...set];</span><br><span class="line"><span class="comment">// ['red', 'green', 'blue']</span></span><br></pre></td></tr></table></figure></p>
-<p>扩展运算符和 Set 结构相符合，就可以进行数组去重了。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</span><br><span class="line"><span class="comment">// [3, 5, 2]</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>进阶方法</strong></p>
-<p>数组的 <code>map</code> 和 <code>filter</code> 方法也可适用于 Set。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">x</span> =&gt;</span> x* <span class="number">2</span>));</span><br><span class="line"><span class="comment">//  返回的set结构： &#123;2, 4, 6&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</span><br><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].filter(<span class="function"><span class="params">x</span> =&gt;</span> (x % <span class="number">2</span>) == <span class="number">0</span>));</span><br><span class="line"><span class="comment">// 返回Set结构：&#123;2, 4&#125;</span></span><br></pre></td></tr></table></figure>
-<p>用 Set 实现并集（Union）、交集（Intersect）和差集（Difference）。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 并集</span></span><br><span class="line"><span class="keyword">let</span> union = <span class="keyword">new</span> <span class="built_in">Set</span>([...a, ...b]);</span><br><span class="line"><span class="comment">// Set &#123;1, 2, 3, 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集</span></span><br><span class="line"><span class="keyword">let</span> intersect = <span class="keyword">new</span> <span class="built_in">Set</span>([...a].filter(<span class="function"><span class="params">x</span> =&gt;</span> b.has(x)));</span><br><span class="line"><span class="comment">// set &#123;2, 3&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集</span></span><br><span class="line"><span class="keyword">let</span> difference = <span class="keyword">new</span> <span class="built_in">Set</span>([...a].filter(<span class="function"><span class="params">x</span> =&gt;</span> !b.has(x)));</span><br><span class="line"><span class="comment">// Set &#123;1&#125;</span></span><br></pre></td></tr></table></figure>
-<p>如果想在遍历操作中，同步改变原来的 Set 结构，目前没有直接的方法，但有两种变通方法。一种是利用原 Set 结构映射出一个新的结构，然后赋值给原来的 Set 结构；另一种是利用 <code>Array.from</code> 方法。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方法一</span></span><br><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">val</span> =&gt;</span> val * <span class="number">2</span>));</span><br><span class="line"><span class="comment">// set的值是2, 4, 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="built_in">Array</span>.from(set, val =&gt; val * <span class="number">2</span>));</span><br><span class="line"><span class="comment">// set的值是2, 4, 6</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://iamtaoxin.com/2018/02/07/es6-set/" data-id="cji5prnsn000gex0dh052lckg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -727,7 +575,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/关于技术/">关于技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端笔记/">前端笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/理论收藏/">理论收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/胡言乱语/">胡言乱语</a></li></ul>
     </div>
   </div>
 
@@ -737,7 +585,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWA/">PWA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leancloud/">leancloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/next/">next</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qiniu/">qiniu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不是诗/">不是诗</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端面试/">前端面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/区块链/">区块链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/收藏/">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器部署/">服务器部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沉思录/">沉思录</a></li></ul>
     </div>
   </div>
 
@@ -747,7 +595,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 12.5px;">bash</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 17.5px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 17.5px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 15px;">前端面试</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
+      <a href="/tags/PWA/" style="font-size: 10px;">PWA</a> <a href="/tags/Vue-js/" style="font-size: 10px;">Vue.js</a> <a href="/tags/bash/" style="font-size: 13.33px;">bash</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/leancloud/" style="font-size: 20px;">leancloud</a> <a href="/tags/next/" style="font-size: 16.67px;">next</a> <a href="/tags/qiniu/" style="font-size: 10px;">qiniu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a> <a href="/tags/不是诗/" style="font-size: 10px;">不是诗</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/前端面试/" style="font-size: 16.67px;">前端面试</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/收藏/" style="font-size: 10px;">收藏</a> <a href="/tags/服务器部署/" style="font-size: 10px;">服务器部署</a> <a href="/tags/沉思录/" style="font-size: 10px;">沉思录</a>
     </div>
   </div>
 
@@ -769,6 +617,14 @@
       <ul>
         
           <li>
+            <a href="/2018/06/14/blockchain-note/">区块链学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/13/fe-interview-html/">前端面试之HTML篇</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/08/node-js-nginx-https/">使用 Node.js + Nginx 部署 HTTPS</a>
           </li>
         
@@ -778,14 +634,6 @@
         
           <li>
             <a href="/2018/05/20/fe-interview-js/">前端面试基础之JavaScript篇</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/18/axios-post/">使用axios发送POST请求时后端获取不到参数的问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/17/arr-yes-or-no/">判断一个对象是否为数组</a>
           </li>
         
       </ul>
