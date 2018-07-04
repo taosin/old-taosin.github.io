@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Nix_____的小黑屋">
 <meta property="og:description" content="1. 优化的原则和方向1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个： 合理使用内存或缓存，减少请求； 减少 CPU 或 GPU 的计算，达到更快的展现。   1.2 前端在性能优化的方向大致有两个： 减少页面体积，提升网络加载; 优化页面渲染   2. 方向详情2.1 较少页面体积，提升网络加载 静态资源的压缩合并（JS 代码压缩合并、 CSS 代码压缩合并、雪碧图）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-08T08:26:41.025Z">
+<meta property="og:updated_time" content="2018-07-04T02:55:33.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈前端优化">
 <meta name="twitter:description" content="1. 优化的原则和方向1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个： 合理使用内存或缓存，减少请求； 减少 CPU 或 GPU 的计算，达到更快的展现。   1.2 前端在性能优化的方向大致有两个： 减少页面体积，提升网络加载; 优化页面渲染   2. 方向详情2.1 较少页面体积，提升网络加载 静态资源的压缩合并（JS 代码压缩合并、 CSS 代码压缩合并、雪碧图）">
@@ -130,7 +130,7 @@
 </li>
 <li><p>懒加载（图片来加载、下拉加载更多）</p>
 <ul>
-<li><p>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器悬案的时候会忽略掉，提高渲染性能）</p>
+<li><p>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器渲染的时候会忽略掉，提高渲染性能）</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"preview.png"</span> <span class="attr">data-src</span>=<span class="string">"realImg.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>

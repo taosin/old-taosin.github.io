@@ -332,7 +332,7 @@
 </li>
 <li><p>懒加载（图片来加载、下拉加载更多）</p>
 <ul>
-<li><p>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器悬案的时候会忽略掉，提高渲染性能）</p>
+<li><p>i. 先将 <code>src</code> 赋值成一个通用的浏览图，下拉的时候再动态赋值成正式的图片。通用的预览图可以是体积比较小的，这样加载会很快，待页面下拉，图片显示出来时，再去替换 <code>src</code> 为 <code>data-src</code> 的值。（ <code>data-</code> 开头的属性浏览器渲染的时候会忽略掉，提高渲染性能）</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"preview.png"</span> <span class="attr">data-src</span>=<span class="string">"realImg.png"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
