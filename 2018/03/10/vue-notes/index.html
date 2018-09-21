@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Nix的小黑屋">
 <meta property="og:description" content="不知不觉，使用 Vue 开发已经两年多了，从 1.0 到 2.0 ，Vue 伴随着我的整个前端开发历程，因此整理一些关于 Vue 的常见知识点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-14T02:54:44.000Z">
+<meta property="og:updated_time" content="2018-07-03T10:07:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue常见知识点">
 <meta name="twitter:description" content="不知不觉，使用 Vue 开发已经两年多了，从 1.0 到 2.0 ，Vue 伴随着我的整个前端开发历程，因此整理一些关于 Vue 的常见知识点。">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-14T10:54:44+08:00">
-                2018-03-14
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-03T18:07:53+08:00">
+                2018-07-03
               </time>
             
           </span>
@@ -363,6 +363,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/10/vue-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/10/vue-notes/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -625,6 +635,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -698,7 +711,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -939,6 +952,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

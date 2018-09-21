@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Nix的小黑屋">
 <meta property="og:description" content="数据驱动的组件，为现代化的 Web 界面而生  关键词：［web］、［数据驱动］、［组件］、［双向绑定］优点：简洁、轻量、快速、数据驱动、组件化官网：vue1.0作者：尤雨溪地址：github 延伸段：1 vuex2自己梳理的vue前端框架:web-front-framework 注：vuejs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T10:08:35.411Z">
+<meta property="og:updated_time" content="2018-07-03T10:08:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Vue">
 <meta name="twitter:description" content="数据驱动的组件，为现代化的 Web 界面而生  关键词：［web］、［数据驱动］、［组件］、［双向绑定］优点：简洁、轻量、快速、数据驱动、组件化官网：vue1.0作者：尤雨溪地址：github 延伸段：1 vuex2自己梳理的vue前端框架:web-front-framework 注：vuejs">
@@ -364,6 +364,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/20/关于vue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2016/07/20/关于vue/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -497,6 +507,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -561,7 +574,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -786,6 +799,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

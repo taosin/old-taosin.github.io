@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://images.iamtaoxin.com/oss_13.jpg">
 <meta property="og:image" content="http://images.iamtaoxin.com/oss_16.jpg">
 <meta property="og:image" content="http://images.iamtaoxin.com/oss_17.jpg">
-<meta property="og:updated_time" content="2018-07-03T10:08:26.291Z">
+<meta property="og:updated_time" content="2018-07-03T10:08:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue使用阿里oss上传图片功能(二)">
 <meta name="twitter:description" content="主要介绍OSS管理控制台设置访问权限、角色等。demo源码 进入控制台，鼠标移到右上角用户名处，点击“访问控制”,如下图：如果没有此功能，则将鼠标移至 产品  -&amp;gt; 管理与控制，点击 访问控制进入访问控制产品页 1.创建子账号 点击左侧的 用户管理 -&amp;gt; 自定义授权策略 -&amp;gt;新建授权策略 ， 如下图：  2.新建授权策略 点击左侧的 策略管理 -&amp;gt; 新建用户 ， 如下图：">
@@ -374,6 +374,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/24/vue页面使用阿里oss上传图片功能-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/24/vue页面使用阿里oss上传图片功能-二/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -540,6 +550,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -613,7 +626,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -854,6 +867,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

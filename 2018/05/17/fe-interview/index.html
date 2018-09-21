@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://segmentfault.com/img/bV8wcf?w=638&h=241/view">
 <meta property="og:image" content="https://segmentfault.com/img/bV8wdm?w=534&h=333">
 <meta property="og:image" content="https://segmentfault.com/img/bV8wf4?w=570&h=709">
-<meta property="og:updated_time" content="2018-05-17T09:55:49.212Z">
+<meta property="og:updated_time" content="2018-05-17T09:55:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端JS面试必须知道的几个点">
 <meta name="twitter:description" content="1.函数的三种定义方法 1.1 函数声明// ES5function getSum()function ()&amp;#123;&amp;#125; //匿名函数// ES6() =&amp;gt; &amp;#123;&amp;#125; //如果 &amp;#123;&amp;#125; 内容只有一行 &amp;#123;&amp;#125; 和return 关键字可省略 1.2 函数表达式（函数字面量）// ES5var sum = function getSu">
@@ -368,6 +368,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/17/fe-interview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/fe-interview/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -561,6 +571,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -634,7 +647,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -875,6 +888,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

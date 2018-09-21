@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Nix的小黑屋">
 <meta property="og:description" content="基于Vue.js的纯前端博客    通过Vue构建博客前端框架 前端代码自动化部署到阿里云cdn 使用阿里云和leancloud构建一个强大的个人博客   项目采用前端使用vue 1.0做为开发框架，leancloud为本站提供数据储存服务。所有静态文件存放在阿里OSS上，无需另外购买服务器，这对于个人来说省了不少费用。 博客说明：该项目是个人博客 iamtaoxin 的前端源码，它属于博客系统的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T10:07:57.099Z">
+<meta property="og:updated_time" content="2018-07-03T10:07:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue+leancloud轻松打造个人博客">
 <meta name="twitter:description" content="基于Vue.js的纯前端博客    通过Vue构建博客前端框架 前端代码自动化部署到阿里云cdn 使用阿里云和leancloud构建一个强大的个人博客   项目采用前端使用vue 1.0做为开发框架，leancloud为本站提供数据储存服务。所有静态文件存放在阿里OSS上，无需另外购买服务器，这对于个人来说省了不少费用。 博客说明：该项目是个人博客 iamtaoxin 的前端源码，它属于博客系统的">
@@ -364,6 +364,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/20/vue-leancloud轻松打造个人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/05/20/vue-leancloud轻松打造个人博客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -527,6 +537,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -600,7 +613,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -841,6 +854,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

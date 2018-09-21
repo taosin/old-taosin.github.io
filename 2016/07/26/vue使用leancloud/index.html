@@ -88,7 +88,7 @@
 <meta property="og:description" content="vue前端使用leadcloud数据存储，实现纯前端＋leadcloud进行数据交互，无需server端，轻松实现个人博客。开发中源码demo代码截图：  leadcloud数据存储：优点：提供一站式后端云服务，从数据存储、实时聊天、消息推送到移动统计，涵盖应用开发的多方面后段需求；">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2222175-29e6038aa1c5b35a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-03T10:09:14.354Z">
+<meta property="og:updated_time" content="2018-07-03T10:09:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue使用leancloud">
 <meta name="twitter:description" content="vue前端使用leadcloud数据存储，实现纯前端＋leadcloud进行数据交互，无需server端，轻松实现个人博客。开发中源码demo代码截图：  leadcloud数据存储：优点：提供一站式后端云服务，从数据存储、实时聊天、消息推送到移动统计，涵盖应用开发的多方面后段需求；">
@@ -366,6 +366,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/26/vue使用leancloud/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2016/07/26/vue使用leancloud/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -496,6 +506,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -560,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -785,6 +798,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

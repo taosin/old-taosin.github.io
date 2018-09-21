@@ -88,7 +88,7 @@
 <meta property="og:description" content="参考：Vue.js风格指南 开发规范开发之前尽量使用最新ES语法，具体如下：  正确使用const和let替代var 使用模板字符串${this.data} 将工具函数等依赖单独分离，并用import导入 对象字面量缩写、箭头函数 通用工具集可以在utils/assist内扩展 在local/routers内测试组件  组件1,命名 尽量简单、表意 export 出的对象是用驼峰命名法，比如 P">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images.iamtaoxin.com/219dda941a28c43341fb6063efcd06d0.png">
-<meta property="og:updated_time" content="2018-07-03T10:08:01.756Z">
+<meta property="og:updated_time" content="2018-07-03T10:08:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue.js组件使用和开发规范">
 <meta name="twitter:description" content="参考：Vue.js风格指南 开发规范开发之前尽量使用最新ES语法，具体如下：  正确使用const和let替代var 使用模板字符串${this.data} 将工具函数等依赖单独分离，并用import导入 对象字面量缩写、箭头函数 通用工具集可以在utils/assist内扩展 在local/routers内测试组件  组件1,命名 尽量简单、表意 export 出的对象是用驼峰命名法，比如 P">
@@ -366,6 +366,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/13/vue-use-dev-normal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/13/vue-use-dev-normal/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -458,8 +468,8 @@
 </ul>
 <h2 id="使用规范"><a href="#使用规范" class="headerlink" title="使用规范"></a>使用规范</h2><p>使用 <code>:prop</code> 传递数据类型为<code>数字</code> 或 <code>boolean</code>时，必须带 <code>:</code>,比如：</p>
 <p>正确的使用方法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page :current=<span class="number">1</span> :total=<span class="string">"100"</span>&gt;&lt;/Page&gt;</span><br></pre></td></tr></table></figure>
-<p>错误的使用方法：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page current=<span class="string">"1"</span> total=<span class="string">"100"</span>&gt;&lt;/Page&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page :current=<span class="number">1</span> :total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>错误的使用方法：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page current=<span class="string">"1"</span> total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -531,6 +541,9 @@
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -605,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -846,6 +859,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

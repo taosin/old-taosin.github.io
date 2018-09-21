@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Nix的小黑屋">
 <meta property="og:description" content="❤️有猛🐯，细嗅🌺   const name = &apos;Nix&apos;;const location = &apos;Shanghai&apos;;const eMail = &apos;taoxin167@gmail.com&apos;;const remark= [&apos;酒徒&apos;, &apos;程序员&apos;, &apos;白日做梦&apos;, &apos;嗜睡症患者&apos;]; Github">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T10:04:24.100Z">
+<meta property="og:updated_time" content="2018-07-03T10:04:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我">
 <meta name="twitter:description" content="❤️有猛🐯，细嗅🌺   const name = &apos;Nix&apos;;const location = &apos;Shanghai&apos;;const eMail = &apos;taoxin167@gmail.com&apos;;const remark= [&apos;酒徒&apos;, &apos;程序员&apos;, &apos;白日做梦&apos;, &apos;嗜睡症患者&apos;]; Github">
@@ -317,6 +317,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -381,7 +384,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -606,6 +609,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

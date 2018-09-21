@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Nix的小黑屋">
 <meta property="og:description" content="1. 优化的原则和方向1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个： 合理使用内存或缓存，减少请求； 减少 CPU 或 GPU 的计算，达到更快的展现。   1.2 前端在性能优化的方向大致有两个： 减少页面体积，提升网络加载; 优化页面渲染   2. 方向详情2.1 较少页面体积，提升网络加载 静态资源的压缩合并（JS 代码压缩合并、 CSS 代码压缩合并、雪碧图）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T02:55:33.363Z">
+<meta property="og:updated_time" content="2018-07-04T02:55:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈前端优化">
 <meta name="twitter:description" content="1. 优化的原则和方向1.1 前端性能优化的原则其实就是更好的用户体验，具体实现的目标大体有两个： 合理使用内存或缓存，减少请求； 减少 CPU 或 GPU 的计算，达到更快的展现。   1.2 前端在性能优化的方向大致有两个： 减少页面体积，提升网络加载; 优化页面渲染   2. 方向详情2.1 较少页面体积，提升网络加载 静态资源的压缩合并（JS 代码压缩合并、 CSS 代码压缩合并、雪碧图）">
@@ -364,6 +364,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/27/front-end-optimization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/27/front-end-optimization/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -551,6 +561,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -624,7 +637,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -865,6 +878,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

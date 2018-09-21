@@ -88,7 +88,7 @@
 <meta property="og:description" content="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应） 圣杯布局 Holy Grail Layout  原理：利用 CSS 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。 Ex: &amp;lt;body&amp;gt;	&amp;lt;div class=&quot;container&quot;&amp;gt;		&amp;lt;div class=&quot;middle&quot;&amp;gt;&amp;lt;/div&amp;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images.iamtaoxin.com/20160922210759487.png">
-<meta property="og:updated_time" content="2018-06-14T08:44:38.449Z">
+<meta property="og:updated_time" content="2018-06-14T08:44:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试之HTML篇">
 <meta name="twitter:description" content="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应） 圣杯布局 Holy Grail Layout  原理：利用 CSS 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。 Ex: &amp;lt;body&amp;gt;	&amp;lt;div class=&quot;container&quot;&amp;gt;		&amp;lt;div class=&quot;middle&quot;&amp;gt;&amp;lt;/div&amp;">
@@ -366,6 +366,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/13/fe-interview-html/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/13/fe-interview-html/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -528,6 +538,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -601,7 +614,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -842,6 +855,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

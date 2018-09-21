@@ -365,6 +365,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/09/front-end-md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/09/front-end-md/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -683,6 +693,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/07/es6-set/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/07/es6-set/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -907,6 +927,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/06/app-shell-md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/06/app-shell-md/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1148,6 +1178,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/13/vue-use-dev-normal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/13/vue-use-dev-normal/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1242,8 +1282,8 @@
 </ul>
 <h2 id="使用规范"><a href="#使用规范" class="headerlink" title="使用规范"></a>使用规范</h2><p>使用 <code>:prop</code> 传递数据类型为<code>数字</code> 或 <code>boolean</code>时，必须带 <code>:</code>,比如：</p>
 <p>正确的使用方法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page :current=<span class="number">1</span> :total=<span class="string">"100"</span>&gt;&lt;/Page&gt;</span><br></pre></td></tr></table></figure>
-<p>错误的使用方法：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page current=<span class="string">"1"</span> total=<span class="string">"100"</span>&gt;&lt;/Page&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page :current=<span class="number">1</span> :total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>错误的使用方法：<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;Page current=<span class="string">"1"</span> total=<span class="string">"100"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Page</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1370,6 +1410,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/02/nginx/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/02/nginx/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1563,7 +1613,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -1784,6 +1834,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'jEsp3Mcz87Y2jhLgpP6z67V6-gzGzoHsz',
+        appKey: 'NoKjA6lkDGwNAPiGu5l7xMD3',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
