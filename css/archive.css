@@ -1,0 +1,54 @@
+/*
+* @Author: iMocco
+* @Date:   2018-11-07 16:59:48
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-09 13:14:01
+*/
+/* 归档archive */
+
+#archive{
+	margin-top: 40px;
+}
+.archive {
+	margin-bottom: 3rem;
+	margin-top: 4rem;
+	border: 1px solid transparent;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.page-title{
+	/*font-size: 20px;*/
+}
+.blog-text-center{
+	text-align: center;
+	margin-bottom: 30px;
+}
+.archive-year{
+	border-bottom: 1px solid #DCDFE6;
+	margin: 30px 0 10px 0;
+	padding-bottom: 15px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #303133;
+}
+.archive-page{
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0;
+	font-size: 16px;
+	margin-left: 20px;
+	border-bottom: 1px dashed #fff;
+	color: #606266;
+	font-family: 'Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.archive-page:hover{
+	border-bottom: 1px dashed #E4E7ED;
+}
+.article-pagi{
+	border-top: 1px solid #ddd;
+	text-align: right;
+	margin-top: 30px;
+	padding-top: 15px;
+	display: flex;
+	justify-content: center;
+}

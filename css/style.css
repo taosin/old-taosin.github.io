@@ -1,0 +1,303 @@
+#header,
+.header-container {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(90deg, #222325, #3b3c3f, #222325);
+  font: 0.8rem Ubuntu, sans-serif;
+  height: 3.25rem;
+  box-shadow: 0 1px 10px -8px rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+.main-nav-ul {
+  display: flex;
+  margin: 0;
+  position: relative;
+}
+.main-nav-ul li {
+  display: inline-block;
+  height: 3.25rem;
+  margin-right: 1em;
+  padding: 0 1em;
+  outline: none;
+  overflow: hidden;
+  line-height: 3.25rem;
+  color: #333;
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  list-style: none;
+}
+.main-nav-ul li a {
+  color: #fff;
+  font-family: kaiti;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+}
+.main-nav-ul li a:hover {
+  padding-bottom: 4px;
+  border-bottom: 1px solid #fff;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 3rem 0 2rem 0;
+  margin-top: 5rem;
+  background-color: #252525;
+  color: #fff !important;
+  text-align: center;
+  width: 100%;
+  line-height: 36px;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+}
+footer a {
+  color: #fff;
+  display: inline-block;
+}
+footer span {
+  color: #fff;
+}
+/*
+* @Author: iMocco
+* @Date:   2018-11-07 16:16:12
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-07 16:32:06
+*/
+#home{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 7.78rem;
+}
+.home-nav {
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.home-nav-ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.home-nav-ul-li {
+	line-height: 40px;
+	font-size: 20px;
+	font-family: cursive;
+	text-align: center;
+}
+.home-nav-ul-li-a {
+	color: #333;
+	text-decoration: none;
+}
+.home-nav-ul-li-a:hover{
+	color: #dfdfdf;
+	text-decoration: line-through;
+}
+/*
+* @Author: iMocco
+* @Date:   2018-11-07 16:59:48
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-09 13:14:01
+*/
+/* 归档archive */
+
+#archive{
+	margin-top: 40px;
+}
+.archive {
+	margin-bottom: 3rem;
+	margin-top: 4rem;
+	border: 1px solid transparent;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.page-title{
+	/*font-size: 20px;*/
+}
+.blog-text-center{
+	text-align: center;
+	margin-bottom: 30px;
+}
+.archive-year{
+	border-bottom: 1px solid #DCDFE6;
+	margin: 30px 0 10px 0;
+	padding-bottom: 15px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #303133;
+}
+.archive-page{
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0;
+	font-size: 16px;
+	margin-left: 20px;
+	border-bottom: 1px dashed #fff;
+	color: #606266;
+	font-family: 'Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.archive-page:hover{
+	border-bottom: 1px dashed #E4E7ED;
+}
+.article-pagi{
+	border-top: 1px solid #ddd;
+	text-align: right;
+	margin-top: 30px;
+	padding-top: 15px;
+	display: flex;
+	justify-content: center;
+}
+/*
+* @Author: iMocco
+* @Date:   2018-11-12 14:40:39
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-21 21:31:54
+*/
+.blogs{
+	margin-top: 3.25rem;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	padding-top: 2rem;
+	overflow-x: hidden;
+}
+.blog-main{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	margin-left: 20px;
+}
+.blog-tags{
+	display: flex;
+	align-items: center;
+	height: 200px;
+	padding: 10px 20px;
+	flex-wrap: wrap;
+}
+.tag{
+	margin: 2px 5px;
+}
+/*
+* @Author: iMocco
+* @Date:   2018-11-12 15:02:57
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-14 16:27:11
+*/
+.article{
+	margin:12px 0;
+	width: 280px;
+	background: #fff;
+	transition: all .3s ease-out;
+	transition-delay: .1s;
+	cursor: pointer;
+}
+.article:hover {
+	box-shadow: 5px 10px 10px -5px rgba(0,0,0,.2);
+	margin-top: 10px;
+	margin-left: -2px;
+}
+.article-img{
+	width: 100%;
+}
+.article-footer{
+	display: table;
+	width: 100%;
+	padding: 10px 15px;
+	border-top: 1px solid #e8e8e8;
+	background: #fbfbfb;
+}
+.article-main{
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+.article-title{
+	text-align: center;
+}
+.article-date{
+}
+.article-title-a{
+	display: block;
+	padding: 1em .5em .2em;
+	font-weight: 400;
+	line-height: 1.5em;
+	text-align: center;
+	font-size: 18px;
+	color: #000;
+	outline: none
+}
+
+.card-text{
+	line-height: 1.4;
+	font-size: 13px;
+	color: #888;
+	text-indent: 2em;
+}
+
+.js-masonry{
+	width: 100%;
+}
+
+@media screen and (min-width: 320px){
+	.blog-main{
+		width: 320px;
+	}
+}
+
+@media screen and (min-width: 620px){
+	.blog-main{
+		width: 620px;
+	}
+}
+
+@media screen and (min-width: 920px){
+	.blog-main{
+		width: 920px;
+	}
+}
+@media screen and (min-width: 1220px){
+	.blog-main{
+		width: 1220px;
+	}
+}
+@media screen and (min-width: 1520px){
+	.blog-main{
+		width: 1520px;
+	}
+}
+.post{
+	padding-bottom: 100px;
+}
+.card-body img{
+	width: 100%;
+}
+body {
+  margin: 0;
+}
+.page-title-link {
+  color: #333;
+  text-decoration: none;
+}
+.page-title-link:hover {
+  text-decoration: underline;
+}
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+#container {
+  width: 100%;
+  height: 100%;
+}
