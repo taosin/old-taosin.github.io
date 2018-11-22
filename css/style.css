@@ -164,7 +164,7 @@ footer span {
 * @Author: iMocco
 * @Date:   2018-11-12 14:40:39
 * @Last Modified by:   iMocco
-* @Last Modified time: 2018-11-21 21:31:54
+* @Last Modified time: 2018-11-22 16:14:31
 */
 .blogs{
 	margin-top: 3.25rem;
@@ -193,7 +193,7 @@ footer span {
 * @Author: iMocco
 * @Date:   2018-11-12 15:02:57
 * @Last Modified by:   iMocco
-* @Last Modified time: 2018-11-14 16:27:11
+* @Last Modified time: 2018-11-22 16:07:28
 */
 .article{
 	margin:12px 0;
@@ -201,7 +201,6 @@ footer span {
 	background: #fff;
 	transition: all .3s ease-out;
 	transition-delay: .1s;
-	cursor: pointer;
 }
 .article:hover {
 	box-shadow: 5px 10px 10px -5px rgba(0,0,0,.2);
@@ -245,6 +244,15 @@ footer span {
 	color: #888;
 	text-indent: 2em;
 }
+.article-bottom-bg{
+	background: url(http://images.iamtaoxin.com/shanshui_1024.jpg) no-repeat 100% 0 #FFF;
+	background-size: cover;
+}
+.article-top-bg{
+	background: url(http://images.iamtaoxin.com/5a619311ce434_1024.jpg) no-repeat 100% 0 #FFF;
+	background-size: 100%;
+}
+
 
 .js-masonry{
 	width: 100%;
@@ -279,9 +287,40 @@ footer span {
 }
 .post{
 	padding-bottom: 100px;
+	padding-top: 100px;
 }
 .card-body img{
 	width: 100%;
+}
+/*
+* @Author: iMocco
+* @Date:   2018-11-22 16:17:06
+* @Last Modified by:   iMocco
+* @Last Modified time: 2018-11-22 16:31:48
+*/
+.about-me{
+	background: linear-gradient(90deg,#222325,#3b3c3f,#222325);
+	position: absolute;
+	top: 3.25rem;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+	padding-top: 4rem;
+}
+
+.about-title{
+	font-family: fantasy;
+	color: #ddd;
+}
+/*模拟光标效果*/
+@keyframes blink {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.content::after {
+	content: '|';
+	animation: blink 1000ms infinite;
 }
 body {
   margin: 0;
