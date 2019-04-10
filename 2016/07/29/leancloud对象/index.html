@@ -12,50 +12,12 @@
 <title>Leancloud对象 | Nix的小黑屋</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!-- <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-<script src="/js/masonry.pkgd.min.js"></script>
 </head>
 
 <body>
 	
 	<header id="header">
-	<div class="banner">
-	</div>
-	<div class="header-container">
-		<div class="logo-wrap">
-		</div>
-		<div class="nav">
-			<nav class="main-nav">
-				<ul class="main-nav-ul">
-					
-					<li class="main-nav-li">
-						<a href="/" class="main-nav-link">首页</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/blogs" class="main-nav-link">博客</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/archives" class="main-nav-link">归档</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/about/" class="main-nav-link">关于</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/archives" class="main-nav-link">实验室</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/blogs" class="main-nav-link">阅读轨迹</a>
-					</li>
-					
-				</ul>
-			</nav>
-		</div>
-	</div>
+	<a href="/" title="Nix_____'s Blog">Nix_____'s Blog</a>
 </header>
 	<div className="container" id="container">
 		<main class="blogs" id="blog">
@@ -63,11 +25,11 @@
 		
 			<div class="post col-xl-8 col-lg-10 col-md-10 col-sm-10">
   <div class="card">
-    
-    <img class="card-img-top" src="http://images.iamtaoxin.com/leancloud.jpg?imageView2/2/q/100" alt="Card image cap">
-    
     <div class="card-body">
-      <h5 class="card-title">Leancloud对象</h5>
+      <div class="card-title">
+        <h3 class="date">Jul 29,2016 / Fri</h3>
+        <h1 class="title">Leancloud对象</h1>
+      </div>
       <p class="card-text">
         <h2 id="leadcloud数据存储开发指南-三-－Js篇"><a href="#leadcloud数据存储开发指南-三-－Js篇" class="headerlink" title="leadcloud数据存储开发指南(三)－Js篇"></a>leadcloud数据存储开发指南(三)－Js篇</h2><p>AV.Object 是 LeanStorage 对复杂对象的封装，每个 AV.Object 包含若干属性值对，也称键值对（key-value）。属性的值是与 JSON 格式兼容的数据。通过 REST API 保存对象需要将对象的数据通过 JSON 来编码。这个数据是无模式化的（Schema Free），这意味着你不需要提前标注每个对象上有哪些 key，你只需要随意设置 key-value 对就可以，云端会保存它。</p>
 <p>数据类型：<br>AV.Object 支持以下类型：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 该语句应该只声明一次</span><br><span class="line"> var TestObject = AV.Object.extend(&apos;DataTypeTest&apos;);</span><br><span class="line"></span><br><span class="line"> var number = 2014;</span><br><span class="line"> var string = &apos;famous film name is &apos; + number;</span><br><span class="line"> var date = new Date();</span><br><span class="line"> var array = [string, number];</span><br><span class="line"> var object = &#123; number: number, string: string &#125;;</span><br><span class="line"></span><br><span class="line"> var testObject = new TestObject();</span><br><span class="line"> testObject.set(&apos;testNumber&apos;, number);</span><br><span class="line"> testObject.set(&apos;testString&apos;, string);</span><br><span class="line"> testObject.set(&apos;testDate&apos;, date);</span><br><span class="line"> testObject.set(&apos;testArray&apos;, array);</span><br><span class="line"> testObject.set(&apos;testObject&apos;, object);</span><br><span class="line"> testObject.set(&apos;testNull&apos;, null);</span><br><span class="line"> testObject.save().then(function(testObject) &#123;</span><br><span class="line">   // 成功</span><br><span class="line"> &#125;, function(error) &#123;</span><br><span class="line">   // 失败</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>

@@ -1,0 +1,115 @@
+pre,
+code,
+kbd,
+samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: inherit;
+}
+
+pre,
+code {
+  background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  width: 100vh;
+}
+
+code {
+  padding: 0 5px;
+  color: #c33;
+}
+
+pre {
+  display: block;
+  padding: 0;
+  padding: 1.25rem;
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  overflow: auto;
+  color: #000;
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  white-space: inherit;
+  background: inherit;
+  border: 0;
+}
+
+kbd {
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #2a2a2a;
+}
+
+blockquote {
+  display: block;
+  padding: 5px 0 5px 15px;
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+  border-left: 5px solid #e22d30;
+}
+
+blockquote p:last-child {
+  margin: 0;
+}
+
+blockquote footer {
+  text-align: right;
+}
+
+sup,
+sub {
+  font-size: 10px;
+  font-size: .625rem;
+  font-style: normal;
+}
+
+sup {
+  vertical-align: super;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+  border-bottom: 1px dotted #000;
+}
+
+q {
+  font-style: italic;
+}
+
+address {
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  font-family: "Consolas", Courier New, Courier, monospace;
+  line-height: 1.5;
+}
+
+dl {
+  margin: 0 0 10px 20px;
+}
+
+dt,
+dd {
+  display: list-item;
+}
+
+dt {
+  font-weight: bold;
+  list-style-type: square;
+}
+
+dd {
+  margin-left: 20px;
+  list-style-type: circle;
+}
+
+select {
+  max-width: 100%;
+}

@@ -1,52 +1,15 @@
-#header,
-.header-container {
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  top: 0;
-  width: 100%;
-  color: #fff;
-  background: linear-gradient(90deg, #222325, #3b3c3f, #222325);
-  font: 0.8rem Ubuntu, sans-serif;
-  height: 3.25rem;
-  box-shadow: 0 1px 10px -8px rgba(0,0,0,0.5);
-  transition: all 0.5s ease;
-  z-index: 1;
-}
-.main-nav-ul {
-  display: flex;
-  margin: 0;
-  position: relative;
-}
-.main-nav-ul li {
-  display: inline-block;
-  height: 3.25rem;
-  margin-right: 1em;
-  padding: 0 1em;
-  outline: none;
-  overflow: hidden;
-  line-height: 3.25rem;
-  color: #333;
+#header {
+  letter-spacing: 5px;
+  margin: 50px auto 15px;
   text-align: center;
-  font-size: 14px;
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  list-style: none;
 }
-.main-nav-ul li a {
-  color: #fff;
-  font-family: kaiti;
+#header a {
+  font-size: 15px;
+  color: #444;
   text-decoration: none;
-  transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-}
-.main-nav-ul li a:hover {
-  padding-bottom: 4px;
-  border-bottom: 1px solid #fff;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+  font-weight: 400;
 }
 footer {
   position: absolute;
@@ -110,18 +73,16 @@ footer span {
 * @Author: iMocco
 * @Date:   2018-11-07 16:59:48
 * @Last Modified by:   iMocco
-* @Last Modified time: 2018-11-09 13:14:01
+* @Last Modified time: 2019-04-10 16:12:25
 */
 /* 归档archive */
 
-#archive{
-	margin-top: 40px;
-}
 .archive {
 	margin-bottom: 3rem;
 	margin-top: 4rem;
 	border: 1px solid transparent;
 	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	width: 100%;
 }
 .page-title{
 	/*font-size: 20px;*/
@@ -147,7 +108,7 @@ footer span {
 	margin-left: 20px;
 	border-bottom: 1px dashed #fff;
 	color: #606266;
-	font-family: 'Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+	font-family: 'Courier New','Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .archive-page:hover{
 	border-bottom: 1px dashed #E4E7ED;
@@ -164,14 +125,12 @@ footer span {
 * @Author: iMocco
 * @Date:   2018-11-12 14:40:39
 * @Last Modified by:   iMocco
-* @Last Modified time: 2018-11-22 16:14:31
+* @Last Modified time: 2019-04-10 16:13:26
 */
 .blogs{
-	margin-top: 3.25rem;
 	width: 100%;
 	height: 100%;
-	background: #eee;
-	padding-top: 2rem;
+	/*background: #eee;*/
 	overflow-x: hidden;
 }
 .blog-main{
@@ -292,6 +251,31 @@ footer span {
 .card-body img{
 	width: 100%;
 }
+.card{
+	border: none;
+	border-radius: 0 !important;
+	box-shadow: 0 0 10px rgba(50, 50, 50, .17);
+}
+h1.title{
+	font-weight: 400;
+	color: #444;
+	margin: 0 0 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+}
+h3.date{
+	font-weight: 400;
+	font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+	font-size: 13px;
+	color: #999;
+	margin: 0 0 30px;
+	letter-spacing: 1px;
+}
+.card-title{
+	text-align: center;
+	border-bottom: 1px dashed #ddd;
+}
 /*
 * @Author: iMocco
 * @Date:   2018-11-22 16:17:06
@@ -322,6 +306,122 @@ footer span {
 	content: '|';
 	animation: blink 1000ms infinite;
 }
+pre,
+code,
+kbd,
+samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: inherit;
+}
+
+pre,
+code {
+  background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  width: 100vh;
+}
+
+code {
+  padding: 0 5px;
+  color: #c33;
+}
+
+pre {
+  display: block;
+  padding: 0;
+  padding: 1.25rem;
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  overflow: auto;
+  color: #000;
+}
+
+pre code {
+  padding: 0;
+  color: inherit;
+  white-space: inherit;
+  background: inherit;
+  border: 0;
+}
+
+kbd {
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #2a2a2a;
+}
+
+blockquote {
+  display: block;
+  padding: 5px 0 5px 15px;
+  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+  border-left: 5px solid #e22d30;
+}
+
+blockquote p:last-child {
+  margin: 0;
+}
+
+blockquote footer {
+  text-align: right;
+}
+
+sup,
+sub {
+  font-size: 10px;
+  font-size: .625rem;
+  font-style: normal;
+}
+
+sup {
+  vertical-align: super;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+  border-bottom: 1px dotted #000;
+}
+
+q {
+  font-style: italic;
+}
+
+address {
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  font-family: "Consolas", Courier New, Courier, monospace;
+  line-height: 1.5;
+}
+
+dl {
+  margin: 0 0 10px 20px;
+}
+
+dt,
+dd {
+  display: list-item;
+}
+
+dt {
+  font-weight: bold;
+  list-style-type: square;
+}
+
+dd {
+  margin-left: 20px;
+  list-style-type: circle;
+}
+
+select {
+  max-width: 100%;
+}
+
 body {
   margin: 0;
 }

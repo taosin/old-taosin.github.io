@@ -2,18 +2,16 @@
 * @Author: iMocco
 * @Date:   2018-11-07 16:59:48
 * @Last Modified by:   iMocco
-* @Last Modified time: 2018-11-09 13:14:01
+* @Last Modified time: 2019-04-10 16:12:25
 */
 /* 归档archive */
 
-#archive{
-	margin-top: 40px;
-}
 .archive {
 	margin-bottom: 3rem;
 	margin-top: 4rem;
 	border: 1px solid transparent;
 	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	width: 100%;
 }
 .page-title{
 	/*font-size: 20px;*/
@@ -39,7 +37,7 @@
 	margin-left: 20px;
 	border-bottom: 1px dashed #fff;
 	color: #606266;
-	font-family: 'Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+	font-family: 'Courier New','Kaiti', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .archive-page:hover{
 	border-bottom: 1px dashed #E4E7ED;

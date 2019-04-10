@@ -12,50 +12,12 @@
 <title>Js实现对象的深度拷贝 | Nix的小黑屋</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!-- <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-<script src="/js/masonry.pkgd.min.js"></script>
 </head>
 
 <body>
 	
 	<header id="header">
-	<div class="banner">
-	</div>
-	<div class="header-container">
-		<div class="logo-wrap">
-		</div>
-		<div class="nav">
-			<nav class="main-nav">
-				<ul class="main-nav-ul">
-					
-					<li class="main-nav-li">
-						<a href="/" class="main-nav-link">首页</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/blogs" class="main-nav-link">博客</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/archives" class="main-nav-link">归档</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/about/" class="main-nav-link">关于</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/archives" class="main-nav-link">实验室</a>
-					</li>
-					
-					<li class="main-nav-li">
-						<a href="/blogs" class="main-nav-link">阅读轨迹</a>
-					</li>
-					
-				</ul>
-			</nav>
-		</div>
-	</div>
+	<a href="/" title="Nix_____'s Blog">Nix_____'s Blog</a>
 </header>
 	<div className="container" id="container">
 		<main class="blogs" id="blog">
@@ -63,11 +25,11 @@
 		
 			<div class="post col-xl-8 col-lg-10 col-md-10 col-sm-10">
   <div class="card">
-    
-    <img class="card-img-top" src="http://images.iamtaoxin.com/0e11af972a262b19c8f38df754c88348.png?imageView2/2/q/100" alt="Card image cap">
-    
     <div class="card-body">
-      <h5 class="card-title">Js实现对象的深度拷贝</h5>
+      <div class="card-title">
+        <h3 class="date">Jul 31,2016 / Sun</h3>
+        <h1 class="title">Js实现对象的深度拷贝</h1>
+      </div>
       <p class="card-text">
         <p>在前端页面中，有些时候数据的变化并没有驱动页面视图的变化，这个时候就需要深度拷贝，所以封装了一个使用原生JS深度的拷贝，代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 定义一个新的空对象</span></span><br><span class="line">        <span class="keyword">let</span> newObject = &#123;&#125;;</span><br><span class="line">        <span class="comment">// 判断原对象是否存在</span></span><br><span class="line">        <span class="keyword">if</span>(oldObj)&#123;</span><br><span class="line">        <span class="comment">// 判断原对象的类型</span></span><br><span class="line">        <span class="keyword">if</span> (oldObj.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">            newObject = <span class="keyword">new</span> oldObj.constructor();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newObject = <span class="keyword">new</span> oldObj.constructor(oldObj.valueOf());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历克隆原对象的属性</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> oldObj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (newObject[key] !== oldObj[key]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span>(oldObj[key]) === <span class="string">'object'</span>) &#123;</span><br><span class="line">                    <span class="comment">// 对象内部的子对象</span></span><br><span class="line">                    newObject[key] = deepCopy(oldObj[key]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    newObject[key] = oldObj[key];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 克隆原对象的常用方法</span></span><br><span class="line">        newObject.toString = oldObj.toString;</span><br><span class="line">        newObject.valueOf = oldObj.valueOf;</span><br><span class="line">        <span class="keyword">return</span> newObject;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
