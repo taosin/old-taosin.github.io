@@ -31,17 +31,18 @@
         <h1 class="title">使用 Node.js + Nginx 部署 HTTPS</h1>
       </div>
       <p class="card-text">
-        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+        <p>具体步骤：</p>
 <ol>
-<li>安装证书</li>
-<li>nginx 反向代理</li>
-</ol>
-</blockquote>
-<h4 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install python-certbot-nginx </span><br><span class="line"></span><br><span class="line">$ sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
-<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>在 <code>/ete/nginx/site-available/default</code> 中:</p>
+<li><p>安装证书</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install software-properties-common</span><br><span class="line">$ sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install python-certbot-nginx </span><br><span class="line"></span><br><span class="line">$ sudo certbot --nginx certonly</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx 反向代理<br>在 <code>/ete/nginx/site-available/default</code> 中:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">location /api &#123;</span><br><span class="line">	proxy_pass      http://localhost:8089;</span><br><span class="line">	proxy_buffering on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重启 <code>nginx</code>，重启 <code>node</code>。</p>
-<h3 style="color:#67C23A"><br>    至此。安装完毕！<br></h3>
+</li>
+</ol>
+<ul>
+<li>重启 <code>nginx</code>，重启 <code>node</code>。</li>
+</ul>
 
       </p>
     </div>

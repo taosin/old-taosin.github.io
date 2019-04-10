@@ -16,6 +16,7 @@ code {
 code {
   padding: 0 5px;
   color: #c33;
+  border-radius: 3px;
 }
 
 pre {

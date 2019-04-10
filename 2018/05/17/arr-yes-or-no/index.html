@@ -31,23 +31,25 @@
         <h1 class="title">判断一个对象是否为数组</h1>
       </div>
       <p class="card-text">
-        <blockquote>
-<p>如何判断一个对象是不是 <strong>Array</strong></p>
-</blockquote>
+        <ul>
+<li><p>如何判断一个对象是不是 <strong>Array</strong></p>
 <ol>
 <li><p><code>Array.isArrya(obj)</code> 调用数组的 <code>isArray</code> 方法 ;</p>
 </li>
 <li><p><code>obj instanceOf Array</code> 判断对象是否是 <code>Array</code> 的示例 ;</p>
 </li>
-<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br><code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
+<li><p><code>Object.prototype.toString.call(obj) ===‘[object Array]’</code><br>   <code>Object.prototype.toString</code> 方法会取得对象的一个内部属性 <code>［［Class］］</code> ，然后依据这个属性，返回一个类似于<code>［object Array］</code>的字符串作为结果，<code>call</code> 用来改变 <code>toString</code> 的 <code>this</code> 指向为待检测的对象</p>
 </li>
 <li><p>判断对象是否有push等数组的一些方法。（这个方法有兼容问题，但也是一个简单易用的方法）</p>
 </li>
 <li><p><code>obj.constructor===Array   //true</code></p>
 </li>
 </ol>
-<p><strong>同理判断一个对象是否是函数</strong>：</p>
-<p><code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
+</li>
+<li><p><strong>同理判断一个对象是否是函数</strong>：</p>
+<p>  <code>console.log(Object.prototype.toString.call(obj)===&#39;[object Function]&#39;)    //true或false</code></p>
+</li>
+</ul>
 
       </p>
     </div>
