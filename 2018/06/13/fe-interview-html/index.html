@@ -1,49 +1,154 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="Nix的小黑屋">
-  <meta name="keywords" content="">
-  
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应） 圣杯布局 Holy Grail Layout   原理：利用 CSS 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。 &amp;lt;body&amp;gt;	&amp;lt;div class=&quot;container&quot;&amp;gt;		&amp;lt;div class=&quot;middle&quot;&amp;gt;&amp;lt;/div&amp;gt;">
+<meta name="keywords" content="前端面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试之HTML篇">
+<meta property="og:url" content="https://iamtaoxin.com/2018/06/13/fe-interview-html/index.html">
+<meta property="og:site_name" content="风中的Nix_____">
+<meta property="og:description" content="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应） 圣杯布局 Holy Grail Layout   原理：利用 CSS 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。 &amp;lt;body&amp;gt;	&amp;lt;div class=&quot;container&quot;&amp;gt;		&amp;lt;div class=&quot;middle&quot;&amp;gt;&amp;lt;/div&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://images.iamtaoxin.com/20160922210759487.png">
+<meta property="og:updated_time" content="2019-04-10T09:08:05.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试之HTML篇">
+<meta name="twitter:description" content="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应） 圣杯布局 Holy Grail Layout   原理：利用 CSS 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。 &amp;lt;body&amp;gt;	&amp;lt;div class=&quot;container&quot;&amp;gt;		&amp;lt;div class=&quot;middle&quot;&amp;gt;&amp;lt;/div&amp;gt;">
+<meta name="twitter:image" content="http://images.iamtaoxin.com/20160922210759487.png">
     
-<title>前端面试之HTML篇 | Nix的小黑屋</title>
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-96088772-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-96088772-1');
-</script>
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>前端面试之HTML篇</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
 
 <body>
-	
-	<header id="header">
-	<a href="/" title="Nix_____'s Blog">Nix_____'s Blog</a>
-</header>
-	<div className="container" id="container">
-		<main class="blogs" id="blog">
-	<div class="row justify-content-center">
-		
-			<div class="post col-xl-8 col-lg-10 col-md-10 col-sm-10">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">
-        <h3 class="date">Jun 13,2018 / Wed</h3>
-        <h1 class="title">前端面试之HTML篇</h1>
-        <div class="article-tags">
-          
-          <a class='tag badge badge-pill'>前端面试</a>
-          
-        </div>
-      </div>
-      <p class="card-text">
-        <h5 id="1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）"><a href="#1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）" class="headerlink" title="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）"></a>1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）</h5><ul>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="http://github.com/taosin">Github</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/06/14/blockchain-note/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/06/08/node-js-nginx-https/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://iamtaoxin.com/2018/06/13/fe-interview-html/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&text=前端面试之HTML篇"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&is_video=false&description=前端面试之HTML篇"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端面试之HTML篇&body=Check out this article: https://iamtaoxin.com/2018/06/13/fe-interview-html/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&name=前端面试之HTML篇&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）"><span class="toc-number">1.</span> <span class="toc-text">1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-CSS-如何实现垂直居中？"><span class="toc-number">2.</span> <span class="toc-text">2. CSS 如何实现垂直居中？</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        前端面试之HTML篇
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">风中的Nix_____</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-06-12T23:49:47.000Z" itemprop="datePublished">2018-06-13</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/前端面试/">前端面试</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+<div class="article-gallery">
+    
+    <a class="gallery-item" href="http://images.iamtaoxin.com/20160922210759487.png" rel="gallery_cjunhl6x4000tcw0exgjyx4ui">
+        <img src="http://images.iamtaoxin.com/20160922210759487.png" itemprop="image" />
+    </a>
+    
+</div>
+
+
+  <div class="content" itemprop="articleBody">
+    <h5 id="1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）"><a href="#1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）" class="headerlink" title="1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）"></a>1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）</h5><ul>
 <li><p>圣杯布局 Holy Grail Layout</p>
 <p>  原理：利用 <strong>CSS</strong> 负边距(Negative Margin)强行将左右两边的 DIV  移动到 中间  DIV  的左右。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 先渲染middle --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -81,27 +186,106 @@
 <p>Flex 教程可参考 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程:语法篇</a></p>
 </blockquote>
 
-      </p>
+  </div>
+</article>
+
+
+
     </div>
-    <div class="card-footer d-flex justify-content-between">
-      
-      <a href="/2018/06/14/blockchain-note/">
-        上一篇：区块链学习笔记
-      </a>
-      
-      
-      <a href="/2018/06/08/node-js-nginx-https/" class="btn btn-link">
-        下一篇：使用 Node.js + Nginx 部署 HTTPS
-      </a>
-      
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="http://github.com/taosin">Github</a></li>
+        
+      </ul>
     </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-CSS-三列布局常用的实现方案（左右定宽，中间自适应）"><span class="toc-number">1.</span> <span class="toc-text">1. CSS 三列布局常用的实现方案（左右定宽，中间自适应）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-CSS-如何实现垂直居中？"><span class="toc-number">2.</span> <span class="toc-text">2. CSS 如何实现垂直居中？</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://iamtaoxin.com/2018/06/13/fe-interview-html/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&text=前端面试之HTML篇"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&is_video=false&description=前端面试之HTML篇"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=前端面试之HTML篇&body=Check out this article: https://iamtaoxin.com/2018/06/13/fe-interview-html/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&title=前端面试之HTML篇"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://iamtaoxin.com/2018/06/13/fe-interview-html/&name=前端面试之HTML篇&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
   </div>
 </div>
-		
-	</div>
-</main>
 
-	</div>
-	
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Nix_____
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="http://github.com/taosin">Github</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-96088772-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
